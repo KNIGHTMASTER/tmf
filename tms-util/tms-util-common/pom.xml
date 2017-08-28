@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>id.co.telkomsigma.tms</groupId>
-        <artifactId>tms</artifactId>
+        <artifactId>tms-util</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>tms-service</artifactId>
+    <artifactId>tms-util-common</artifactId>
     <packaging>jar</packaging>
-    <name>tms-service</name>
-    <description>Service Component for Microservices Framework</description>
-    
+    <name>tms-util-common</name>
+    <description>Util Commons Components for Project Telkomsigma MicroServices</description>
+
     <organization>
         <name>Telkomsigma</name>
         <url>http://www.telkomsigma.co.id</url>
@@ -28,17 +28,4 @@
             <timezone>+7</timezone>
         </developer>
     </developers>
-    
-    <dependencies>
-        <dependency>
-            <groupId>id.co.telkomsigma.tms</groupId>
-            <artifactId>tms-dao</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>id.co.telkomsigma.tms</groupId>
-            <artifactId>tms-util-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>

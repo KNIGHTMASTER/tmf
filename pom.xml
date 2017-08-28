@@ -38,9 +38,9 @@
         <module>data</module>
         <module>dao</module>
         <module>service</module>
-        <module>util</module>
         <module>security</module>
         <module>integration</module>
+        <module>tms-util</module>
     </modules>
     
     <properties>

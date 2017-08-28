@@ -170,4 +170,23 @@ public interface TmsConstant {
         String ROLE_MEMBER = "ROLE_MEMBER";
         String ROLE_THIRD_PARTY = "ROLE_THIRD_PARTY";
     }
+
+    interface Query {
+        String SELECT_LOV = "SELECT id, name FROM #{#entityName}";
+        String COUNT_ENTITY_SIZE = "SELECT COUNT(a) FROM #{#entityName} a";
+        String COUNT_ENTITY_SIZE_BY_STATUS = "SELECT COUNT(a) FROM #{#entityName} a where a.status = ?1";
+        String COUNT_ENTITY_SIZE_BY_CODE = "SELECT COUNT(a) FROM #{#entityName} a where a.code LIKE %?1%";
+        String COUNT_ENTITY_SIZE_BY_CODE_AND_STATUS = "SELECT COUNT(a) FROM #{#entityName} a where a.code LIKE %?1% and a.status = ?2";
+        String COUNT_ENTITY_SIZE_BY_NAME = "SELECT COUNT(a) FROM #{#entityName} a where a.name LIKE %?1%";
+        String COUNT_ENTITY_SIZE_BY_NAME_AND_STATUS = "SELECT COUNT(a) FROM #{#entityName} a where a.name LIKE %?1% and a.status = ?2";
+        String ADVANCED_PAGINATION = "SELECT a FROM #{#entityName} a WHERE a.?1 = ?2";
+        int STATUS_APPROVED = 1;
+        int STATUS_CANCELLED = 0;
+        String ASCENDING = "asc";
+        String DESCENDING = "desc";
+    }
+
+    interface BeanName {
+        String SCAFFOLDING_SERVICE_BEAN = "scaffoldingService";
+    }
 }

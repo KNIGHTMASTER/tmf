@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
+ *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @MappedSuperclass

@@ -7,11 +7,10 @@
         <version>1.0.0</version>
     </parent>
     <artifactId>tms-util</artifactId>
-    <packaging>jar</packaging>
-    
+    <packaging>pom</packaging>
     <name>tms-util</name>
-    <description>Util Component for Microservices Framework</description>
-    
+    <description>Util Components for Project Telkomsigma MicroServices</description>
+
     <organization>
         <name>Telkomsigma</name>
         <url>http://www.telkomsigma.co.id</url>
@@ -29,16 +28,8 @@
             <timezone>+7</timezone>
         </developer>
     </developers>
-    
-    <dependencies>
-        <dependency>
-            <groupId>id.co.telkomsigma.tms</groupId>
-            <artifactId>tms-service</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-mail</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>tms-util-common</module>
+        <module>tms-util-multiplex</module>
+    </modules>
 </project>
