@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>id.co.telkomsigma.tms</groupId>
-        <artifactId>tms</artifactId>
+        <groupId>id.co.telkomsigma.tmf</groupId>
+        <artifactId>tmf</artifactId>
         <version>1.0.0</version>
     </parent>
     
-    <artifactId>tms-security</artifactId>
+    <artifactId>tmf-security</artifactId>
     <packaging>jar</packaging>
-    <name>tms-security</name>
+    <name>tmf-security</name>
     <description>Security Component for Microservices Framework</description>
     
     <organization>
@@ -32,8 +32,8 @@
     
     <dependencies>
         <dependency>
-            <groupId>id.co.telkomsigma.tms</groupId>
-            <artifactId>tms-integration</artifactId>
+            <groupId>id.co.telkomsigma.tmf</groupId>
+            <artifactId>tmf-integration</artifactId>
             <version>${project.version}</version>
         </dependency>
 

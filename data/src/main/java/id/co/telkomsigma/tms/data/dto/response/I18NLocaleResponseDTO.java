@@ -3,7 +3,7 @@ package id.co.telkomsigma.tms.data.dto.response;
 import java.io.Serializable;
 
 /**
- * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
+ * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 public class I18NLocaleResponseDTO implements Serializable {
 

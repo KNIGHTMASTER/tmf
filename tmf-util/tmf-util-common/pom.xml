@@ -3,14 +3,14 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>id.co.telkomsigma.tmf</groupId>
-        <artifactId>tmf</artifactId>
+        <artifactId>tmf-util</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>tmf-dao</artifactId>
+    <artifactId>tmf-util-common</artifactId>
     <packaging>jar</packaging>
-    <name>tmf-dao</name>
-    <description>DAO Component for Microservices Framework</description>
-    
+    <name>tmf-util-common</name>
+    <description>Util Commons Components for Project Telkomsigma MicroServices</description>
+
     <organization>
         <name>Telkomsigma</name>
         <url>http://www.telkomsigma.co.id</url>
@@ -28,12 +28,4 @@
             <timezone>+7</timezone>
         </developer>
     </developers>
-    
-    <dependencies>
-        <dependency>
-            <groupId>id.co.telkomsigma.tmf</groupId>
-            <artifactId>tmf-data</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
 </project>

@@ -2,14 +2,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>id.co.telkomsigma.tms</groupId>
-        <artifactId>tms</artifactId>
+        <groupId>id.co.telkomsigma.tmf</groupId>
+        <artifactId>tmf</artifactId>
         <version>1.0.0</version>
     </parent>
         
-    <artifactId>tms-data</artifactId>
+    <artifactId>tmf-data</artifactId>
     <packaging>jar</packaging>
-    <name>tms-data</name>
+    <name>tmf-data</name>
     <description>Data Component for Microservices Framework</description>
     
     <organization>

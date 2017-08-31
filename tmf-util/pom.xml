@@ -6,11 +6,11 @@
         <artifactId>tmf</artifactId>
         <version>1.0.0</version>
     </parent>
-    <artifactId>tmf-dao</artifactId>
-    <packaging>jar</packaging>
-    <name>tmf-dao</name>
-    <description>DAO Component for Microservices Framework</description>
-    
+    <artifactId>tmf-util</artifactId>
+    <packaging>pom</packaging>
+    <name>tmf-util</name>
+    <description>Util Components for Project Telkomsigma MicroServices</description>
+
     <organization>
         <name>Telkomsigma</name>
         <url>http://www.telkomsigma.co.id</url>
@@ -28,12 +28,8 @@
             <timezone>+7</timezone>
         </developer>
     </developers>
-    
-    <dependencies>
-        <dependency>
-            <groupId>id.co.telkomsigma.tmf</groupId>
-            <artifactId>tmf-data</artifactId>
-            <version>${project.version}</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>tmf-util-common</module>
+        <module>tmf-util-multiplex</module>
+    </modules>
 </project>

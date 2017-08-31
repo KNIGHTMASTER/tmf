@@ -16,7 +16,7 @@ public abstract class ASigmaException extends Exception{
 	 */
 	private static final long serialVersionUID = -3006085274327484535L;
 
-	private Logger logger = LoggerFactory.getLogger(ASigmaException.class);
+	protected static final Logger LOGGER = LoggerFactory.getLogger(ASigmaException.class);
 
     public ASigmaException(String p_Message) {
         this(p_Message, null);
@@ -25,15 +25,15 @@ public abstract class ASigmaException extends Exception{
     public ASigmaException(String p_Message, Throwable p_Throwable) {
         super(p_Message, p_Throwable);
         if (p_Message != null && p_Throwable != null) {
-            logger.info(p_Message);
+            LOGGER.info(p_Message);
             p_Throwable.printStackTrace();
 
         } else {
             if (p_Message != null) {
-                logger.info(p_Message);
+                LOGGER.info(p_Message);
             }
             if (p_Throwable != null) {
-                logger.error(p_Throwable.getMessage());
+                LOGGER.error(p_Throwable.getMessage());
                 p_Throwable.printStackTrace();
             }
         }
