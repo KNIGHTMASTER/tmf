@@ -1,6 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.base;
 
-import id.co.telkomsigma.tmf.data.constant.TmsConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -32,7 +32,7 @@ public abstract class AAuditTrail extends ABaseAuditTrail {
 	@PrePersist
 	public void onPrePersist(){
 		setCreatedBy(sigmaAuditorAware.getCurrentAuditor().getUserName());
-		setStatus(TmsConstant.Common.GeneralValue.ONE);
+		setStatus(TMFConstant.Common.GeneralValue.ONE);
 		setCreatedOn(new Date());
 		setCreatedIP(sigmaAuditorAware.getCurrentAuditor().getIpAddress());
 		setCreatedPlatform(sigmaAuditorAware.getCurrentAuditor().getPlatform());

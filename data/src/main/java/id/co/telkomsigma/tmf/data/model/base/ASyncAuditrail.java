@@ -1,6 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.base;
 
-import id.co.telkomsigma.tmf.data.constant.TmsConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
@@ -32,7 +32,7 @@ public abstract class ASyncAuditrail extends AAuditTrail {
     @PrePersist
     public void onPrePersist(){
     	super.onPrePersist();
-    	setSync(TmsConstant.Common.GeneralValue.ZERO);
+    	setSync(TMFConstant.Common.GeneralValue.ZERO);
     }
     
     @Override

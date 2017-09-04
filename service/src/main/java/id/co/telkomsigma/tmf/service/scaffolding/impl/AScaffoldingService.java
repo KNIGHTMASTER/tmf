@@ -2,7 +2,7 @@ package id.co.telkomsigma.tmf.service.scaffolding.impl;
 
 import id.co.telkomsigma.tmf.dao.exception.DAOException;
 import id.co.telkomsigma.tmf.dao.scaffolding.IScaffoldingDAO;
-import id.co.telkomsigma.tmf.data.constant.TmsConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.service.exception.ServiceException;
 import id.co.telkomsigma.tmf.service.scaffolding.IScaffoldingService;
@@ -22,7 +22,7 @@ import java.util.List;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  * @param <DATA>
  */
-@Service(TmsConstant.BeanName.SCAFFOLDING_SERVICE_BEAN)
+@Service(TMFConstant.BeanName.SCAFFOLDING_SERVICE_BEAN)
 public abstract class AScaffoldingService<DATA extends AAuditTrail> implements IScaffoldingService<DATA>, IServiceInitializer {
 
     private static Logger LOGGER = LoggerFactory.getLogger(AScaffoldingService.class);
@@ -35,7 +35,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findAll() throws ServiceException {
         try {
-            return scaffoldingDAO.findByStatus(TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByStatus(TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -56,7 +56,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByCode(String p_Code) throws ServiceException {
         try {
-            return scaffoldingDAO.findByCodeContainingAndStatus(p_Code, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByCodeContainingAndStatus(p_Code, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -66,7 +66,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByCodeOrderByIdAsc(String p_Code) throws ServiceException {
         try {
-            return scaffoldingDAO.findByCodeContainingAndStatusOrderByIdAsc(p_Code, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByCodeContainingAndStatusOrderByIdAsc(p_Code, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -76,7 +76,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByCodeOrderByCodeAsc(String p_Code) throws ServiceException {
         try {
-            return scaffoldingDAO.findByCodeContainingAndStatusOrderByCodeAsc(p_Code, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByCodeContainingAndStatusOrderByCodeAsc(p_Code, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -86,7 +86,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByCodeOrderByCodeDesc(String p_Code) throws ServiceException {
         try {
-            return scaffoldingDAO.findByCodeContainingAndStatusOrderByCodeDesc(p_Code, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByCodeContainingAndStatusOrderByCodeDesc(p_Code, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -96,7 +96,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public Page<DATA> findByCodeOrderByCodeAsc(String p_Code, Pageable p_Pageable) throws ServiceException {
         try {
-            return scaffoldingDAO.findByCodeContainingAndStatusOrderByCodeAsc(p_Code, TmsConstant.Common.GeneralValue.ONE, p_Pageable);
+            return scaffoldingDAO.findByCodeContainingAndStatusOrderByCodeAsc(p_Code, TMFConstant.Common.GeneralValue.ONE, p_Pageable);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -106,7 +106,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByName(String p_Name) {
         try {
-            return scaffoldingDAO.findByNameContainingAndStatus(p_Name, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByNameContainingAndStatus(p_Name, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -116,7 +116,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByNameOrderByIdAsc(String p_Name) {
         try {
-            return scaffoldingDAO.findByNameContainingAndStatusOrderByIdAsc(p_Name, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByNameContainingAndStatusOrderByIdAsc(p_Name, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -126,7 +126,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByNameOrderByNameAsc(String p_Name) throws ServiceException {
         try {
-            return scaffoldingDAO.findByNameContainingAndStatusOrderByNameAsc(p_Name, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByNameContainingAndStatusOrderByNameAsc(p_Name, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -136,7 +136,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findByNameOrderByNameDesc(String p_Name) throws ServiceException {
         try {
-            return scaffoldingDAO.findByNameContainingAndStatusOrderByNameDesc(p_Name, TmsConstant.Common.GeneralValue.ONE);
+            return scaffoldingDAO.findByNameContainingAndStatusOrderByNameDesc(p_Name, TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -146,7 +146,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public Page<DATA> findByNameOrderByNameAsc(String p_Name, Pageable p_Pageable) throws ServiceException {
         try {
-            return scaffoldingDAO.findByNameContainingAndStatusOrderByNameAsc(p_Name, TmsConstant.Common.GeneralValue.ONE, p_Pageable);
+            return scaffoldingDAO.findByNameContainingAndStatusOrderByNameAsc(p_Name, TMFConstant.Common.GeneralValue.ONE, p_Pageable);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
             return null;
@@ -183,7 +183,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     /*======================================================================================================*/
     @Override
     public void insert(DATA p_DATA) throws ServiceException {
-        if (p_DATA.getCode() == null || p_DATA.getCode().equals(TmsConstant.Common.Punctuation.EMPTY)) {
+        if (p_DATA.getCode() == null || p_DATA.getCode().equals(TMFConstant.Common.Punctuation.EMPTY)) {
             p_DATA.setCode(generateRandomCode());
         }
         try {
@@ -195,7 +195,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
 
     @Override
     public void insertAndFlush(DATA p_DATA) throws ServiceException {
-        if (p_DATA.getCode() == null || p_DATA.getCode().equals(TmsConstant.Common.Punctuation.EMPTY)) {
+        if (p_DATA.getCode() == null || p_DATA.getCode().equals(TMFConstant.Common.Punctuation.EMPTY)) {
             p_DATA.setCode(generateRandomCode());
         }
         try {
@@ -208,7 +208,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public void insertCollection(List<DATA> p_DATA) throws ServiceException {
         for (DATA data : p_DATA) {
-            if (data.getCode() == null || data.getCode().equals(TmsConstant.Common.Punctuation.EMPTY)) {
+            if (data.getCode() == null || data.getCode().equals(TMFConstant.Common.Punctuation.EMPTY)) {
                 data.setCode(generateRandomCode());
             }
         }
@@ -221,7 +221,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
 
     @Override
     public void update(DATA p_DATA) throws ServiceException {
-        p_DATA.setStatus(TmsConstant.Common.GeneralValue.ONE);
+        p_DATA.setStatus(TMFConstant.Common.GeneralValue.ONE);
         if (p_DATA.getCode() == null) {
             p_DATA.setCode(generateRandomCode());
         }
@@ -246,7 +246,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
         if (p_Code != null) {
             DATA data = null;
             try {
-                data = scaffoldingDAO.findByCodeContainingAndStatus(p_Code, TmsConstant.Common.GeneralValue.ONE).get(0);
+                data = scaffoldingDAO.findByCodeContainingAndStatus(p_Code, TMFConstant.Common.GeneralValue.ONE).get(0);
             } catch (DAOException e) {
                 LOGGER.error("Data is not found {} " + e.getMessage());
             }
@@ -266,7 +266,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
         for (String p_Code : p_Codes) {
             if (p_Code != null) {
                 try {
-                    datas.add(scaffoldingDAO.findByCodeContainingAndStatus(p_Code, TmsConstant.Common.GeneralValue.ONE).get(0));
+                    datas.add(scaffoldingDAO.findByCodeContainingAndStatus(p_Code, TMFConstant.Common.GeneralValue.ONE).get(0));
                 } catch (DAOException e) {
                     LOGGER.error(e.getMessage());
                 }

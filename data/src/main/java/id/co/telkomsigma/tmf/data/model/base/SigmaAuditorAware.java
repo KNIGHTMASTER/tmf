@@ -1,7 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.base;
 
-import id.co.telkomsigma.tmf.data.constant.TmsConstant;
-import id.co.telkomsigma.tmf.data.dto.AuthenticationDetailDTO;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
+import id.co.telkomsigma.tmf.data.dto.TMFAuthenticationDetailDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -13,22 +13,22 @@ import org.springframework.stereotype.Component;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-public class SigmaAuditorAware implements AuditorAware<AuthenticationDetailDTO> {
+public class SigmaAuditorAware implements AuditorAware<TMFAuthenticationDetailDTO> {
 
 	@Autowired
-    AuthenticationDetailDTO authenticationDetailDTO;
+    TMFAuthenticationDetailDTO TMFAuthenticationDetailDTO;
 	
     @Override
-    public AuthenticationDetailDTO getCurrentAuditor() {
+    public TMFAuthenticationDetailDTO getCurrentAuditor() {
         try{
-        	TmsAuthenticationDetail tmsAuthenticationDetail = (TmsAuthenticationDetail) SecurityContextHolder.getContext().getAuthentication().getDetails();
-            authenticationDetailDTO = tmsAuthenticationDetail.getAuthenticationDetailDTO();
-            authenticationDetailDTO.setUserName(SecurityContextHolder.getContext().getAuthentication().getName());
-            return authenticationDetailDTO;
+        	TMFAuthenticationDetail TMFAuthenticationDetail = (TMFAuthenticationDetail) SecurityContextHolder.getContext().getAuthentication().getDetails();
+            TMFAuthenticationDetailDTO = TMFAuthenticationDetail.getTMFAuthenticationDetailDTO();
+            TMFAuthenticationDetailDTO.setUserName(SecurityContextHolder.getContext().getAuthentication().getName());
+            return TMFAuthenticationDetailDTO;
         }catch (Exception e) {
-            AuthenticationDetailDTO authenticationDetailDTO = new AuthenticationDetailDTO();
-        	authenticationDetailDTO.setUserName(TmsConstant.Common.PUBLIC_USER);
-			return authenticationDetailDTO;
+            TMFAuthenticationDetailDTO TMFAuthenticationDetailDTO = new TMFAuthenticationDetailDTO();
+        	TMFAuthenticationDetailDTO.setUserName(TMFConstant.Common.PUBLIC_USER);
+			return TMFAuthenticationDetailDTO;
 		}
     }
 }

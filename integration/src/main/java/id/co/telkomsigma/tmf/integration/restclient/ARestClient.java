@@ -27,7 +27,7 @@ public abstract class ARestClient<DATA, REQUEST_ENTITY> implements IRestClient<D
     }
 
     @Override
-    public DATA queryClient(String p_UrlToQuery, MultiValueMap<String, String> p_HttpHeaders, Object p_ObjectToPass) {
+    public DATA queryClient(String p_UrlToQuery, MultiValueMap<String, String> p_HttpHeaders, REQUEST_ENTITY p_ObjectToPass) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         HttpEntity<REQUEST_ENTITY> entity = new HttpEntity(p_ObjectToPass, p_HttpHeaders);

@@ -1,7 +1,7 @@
 package id.co.telkomsigma.tmf.dao.scaffolding;
 
 import id.co.telkomsigma.tmf.dao.exception.DAOException;
-import id.co.telkomsigma.tmf.data.constant.TmsConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -40,23 +40,23 @@ public interface IInquiryDAO<DATA> {
 	Page<DATA> findByNameContainingAndStatusOrderByNameAsc(String p_Name, int p_Status, Pageable p_Pageable) throws DAOException;
 
 	/*List Of Value*/
-	@Query(TmsConstant.Query.SELECT_LOV)
+	@Query(TMFConstant.Query.SELECT_LOV)
 	List<DATA> selectLOV() throws DAOException;
 
 	/*Entity Size Counter*/
-	@Query(TmsConstant.Query.COUNT_ENTITY_SIZE_BY_STATUS)
+	@Query(TMFConstant.Query.COUNT_ENTITY_SIZE_BY_STATUS)
 	Long countDATASizeByStatus(int p_Status);
 
-	@Query(TmsConstant.Query.COUNT_ENTITY_SIZE_BY_CODE)
+	@Query(TMFConstant.Query.COUNT_ENTITY_SIZE_BY_CODE)
 	Long countDATASizeByCode(String p_Code);
 
-	@Query(TmsConstant.Query.COUNT_ENTITY_SIZE_BY_CODE_AND_STATUS)
+	@Query(TMFConstant.Query.COUNT_ENTITY_SIZE_BY_CODE_AND_STATUS)
 	Long countDATASizeByCodeAndStatus(String p_Code, int p_Status);
 
-	@Query(TmsConstant.Query.COUNT_ENTITY_SIZE_BY_NAME)
+	@Query(TMFConstant.Query.COUNT_ENTITY_SIZE_BY_NAME)
 	Long countDATASizeByName(String p_Name);
 
-	@Query(TmsConstant.Query.COUNT_ENTITY_SIZE_BY_NAME_AND_STATUS)
+	@Query(TMFConstant.Query.COUNT_ENTITY_SIZE_BY_NAME_AND_STATUS)
 	Long countDATASizeByNameAndStatus(String p_Name, int p_Status);
         
 	/*@Query(QueryConstant.ADVANCED_PAGINATION)

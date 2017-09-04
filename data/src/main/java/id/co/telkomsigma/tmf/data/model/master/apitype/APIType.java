@@ -1,6 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.master.apitype;
 
-import id.co.telkomsigma.tmf.data.constant.TmsConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 
 import javax.persistence.Column;
@@ -13,7 +13,7 @@ import javax.validation.constraints.NotNull;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TmsConstant.Table.Master.MST_API_TYPE)
+@Table(name = TMFConstant.Table.Master.MST_API_TYPE)
 public class APIType extends AAuditTrail {
 
     /**
@@ -101,7 +101,7 @@ public class APIType extends AAuditTrail {
 
     @Override
     public String tableName() {
-        return TmsConstant.Table.Master.MST_API_TYPE;
+        return TMFConstant.Table.Master.MST_API_TYPE;
     }
 
 }

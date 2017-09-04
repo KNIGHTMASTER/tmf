@@ -1,6 +1,5 @@
 package id.co.telkomsigma.tmf.data.dto;
 
-import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
@@ -11,8 +10,7 @@ import java.io.Serializable;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Component
-@Scope("session")
-public class AuthenticationDetailDTO implements Serializable{
+public class TMFAuthenticationDetailDTO implements Serializable{
 
     private static final long serialVersionUID = -5319037526372148506L;
 

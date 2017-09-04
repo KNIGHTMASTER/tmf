@@ -1,4 +1,4 @@
-package id.co.telkomsigma.tmf.service.impl;
+package id.co.telkomsigma.tmf.service;
 
 import id.co.telkomsigma.tmf.data.model.master.apitype.APIType;
 import id.co.telkomsigma.tmf.service.scaffolding.IScaffoldingService;

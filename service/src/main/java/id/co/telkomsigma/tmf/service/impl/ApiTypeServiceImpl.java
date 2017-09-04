@@ -2,6 +2,7 @@ package id.co.telkomsigma.tmf.service.impl;
 
 import id.co.telkomsigma.tmf.dao.ApiTypeDAO;
 import id.co.telkomsigma.tmf.data.model.master.apitype.APIType;
+import id.co.telkomsigma.tmf.service.IApiTypeService;
 import id.co.telkomsigma.tmf.service.scaffolding.impl.AScaffoldingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +15,7 @@ import javax.annotation.PostConstruct;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Service
-public class ApiTypeServiceImpl extends AScaffoldingService<APIType> implements IApiTypeService{
+public class ApiTypeServiceImpl extends AScaffoldingService<APIType> implements IApiTypeService {
 
     @Autowired
     ApiTypeDAO apiTypeDAO;

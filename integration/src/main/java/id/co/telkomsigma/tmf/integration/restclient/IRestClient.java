@@ -15,5 +15,5 @@ public interface IRestClient<DATA, REQUEST_ENTITY> {
 
     DATA queryClient(String p_UrlToQuery);
 
-    DATA queryClient(String p_UrlToQuery, MultiValueMap<String, String> p_HttpHeaders, Object p_ObjectToPass);
+    DATA queryClient(String p_UrlToQuery, MultiValueMap<String, String> p_HttpHeaders, REQUEST_ENTITY p_ObjectToPass);
 }

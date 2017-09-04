@@ -5,9 +5,10 @@ package id.co.telkomsigma.tmf.data.constant;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public interface TmsConstant {
+public interface TMFConstant {
 
     interface Common {
+        String BASE_PACKAGES = "id.co.telkomsigma.tmf";
         String AUTHORIZATION = "Authorization";
         String BEARER_PREFIX = "Bearer ";
         String BASIC_PREFIX = "Basic ";
@@ -125,6 +126,7 @@ public interface TmsConstant {
         String PATH_AUTH = "/100001";
         String PATH_REFRESH = "/100004";
         String PATH_ADMIN_MENU_GENERATOR = "/100003";
+        String PATH_ECHO = "/echo";
 
         interface PathScaffolding {
             String PATH_FIND_ALL = "/100004";
@@ -172,6 +174,18 @@ public interface TmsConstant {
     }
 
     interface Query {
+        String LOGIN = "SELECT "
+                + "ocd.client_id, ocd.client_secret, sud.user_enabled, "
+                + "sud.user_expired_date, sud.user_credentials_expired_date, sud.user_non_locked, sr.code "
+                + "FROM sec_user_details sud "
+                + "JOIN sec_oauth_client_details ocd ON sud.client_id = ocd.client_id "
+                + "JOIN sec_role sr ON sud.role_id = sr.id "
+                + "JOIN sec_user_profile mp ON mp.user_id = sud.user_id "
+                + "JOIN sec_contact sc ON sc.id = mp.contact_id "
+                + "WHERE ocd.client_id = ? OR sc.email = ? OR sc.phone_number_1 = ?";
+
+        String AUTHENTICATION_CHANGE = "UPDATE oauth_client_details "
+                + "SET client_secret = ?1 WHERE client_id = ?2";
         String SELECT_LOV = "SELECT id, name FROM #{#entityName}";
         String COUNT_ENTITY_SIZE = "SELECT COUNT(a) FROM #{#entityName} a";
         String COUNT_ENTITY_SIZE_BY_STATUS = "SELECT COUNT(a) FROM #{#entityName} a where a.status = ?1";
@@ -188,5 +202,28 @@ public interface TmsConstant {
 
     interface BeanName {
         String SCAFFOLDING_SERVICE_BEAN = "scaffoldingService";
+    }
+
+    interface ResourceProperties {
+        public static final String PARAM_HEADER_KEY = "${eth.api.param.key}";
+        public static final String PARAM_HEADER_TIMESTAMP = "${eth.api.param.timestamp}";
+        public static final String PARAM_HEADER_SIGNATURE = "${eth.api.param.signature}";
+        public static final String WSCONTEXT = "${eth.wscontext}";
+    }
+
+    interface SystemParameterKey {
+        public static final String EMAIL_FORGOT_PASSWORD_SUBJECT = "ETH.EMAIL.FORGOT.PASSWORD.SUBJECT";
+        public static final String EMAIL_FORGOT_PASSWORD_BODY_MESSAGE = "ETH.EMAIL.FORGOT.PASSWORD.BODY.MESSAGE";
+        public static final String EMAIL_FORGOT_PASSWORD_VERIFY_SUBJECT = "ETH.EMAIL.FORGOT.PASSWORD.VERIFY.SUBJECT";
+        public static final String EMAIL_FORGOT_PASSWORD_VERIFY_BODY_MESSAGE = "ETH.EMAIL.FORGOT.PASSWORD.VERIFY.BODY.MESSAGE";
+        public static final String EMAIL_NEW_USER_SUBJECT = "ETH.EMAIL.NEW.USER.SUBJECT";
+        public static final String EMAIL_NEW_USER_BODY_MESSAGE = "ETH.EMAIL.NEW.USER.BODY.MESSAGE";
+        public static final String HEADER_KEY = "ETH.HEADER.KEY";
+    }
+
+    interface ApplicationContext {
+        public static final String CONTEXT_CONFIG_LOCATION_PARAMETER = "contextConfigLocation";
+        public static final String CONTEXT_SYSTEM_PARAMETER = "CONTEXT_SYSTEM_PARAMETER";
+        public static final String CONTEXT_I18NLOCALE = "CONTEXT_I18NLOCALE";
     }
 }
