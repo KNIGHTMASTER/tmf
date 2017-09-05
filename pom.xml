@@ -35,18 +35,24 @@
     </developers>
     
     <modules>
-        <module>data</module>
-        <module>dao</module>
-        <module>service</module>
-        <module>security</module>
-        <module>integration</module>
+        <module>tmf-data</module>
+        <module>tmf-dao</module>
+        <module>tmf-service</module>
         <module>tmf-util</module>
+        <module>tmf-batch</module>
+        <module>tmf-security</module>
+        <module>tmf-integration</module>
+        <module>tmf-security-management</module>
     </modules>
     
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <quartz.version>2.3.0</quartz.version>
+        <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
+        <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
+        <jjwt.version>0.7.0</jjwt.version>
     </properties>
     
 </project>
