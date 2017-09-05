@@ -1,8 +1,8 @@
-package id.co.telkomsigma.tmf.integration.impl;
+package id.co.telkomsigma.tmf.security.management.integration.impl;
 
 
 import id.co.telkomsigma.tmf.data.dto.response.AdminMenuDTO;
-import id.co.telkomsigma.tmf.integration.IAdminMenuGeneratorEndPoint;
+import id.co.telkomsigma.tmf.security.management.integration.IAdminMenuGeneratorEndPoint;
 import id.co.telkomsigma.tmf.security.provider.UserAuthenticationContext;
 import id.co.telkomsigma.tmf.service.IAdminMenuGenerator;
 import org.springframework.beans.factory.annotation.Autowired;

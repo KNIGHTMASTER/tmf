@@ -1,4 +1,4 @@
-package id.co.telkomsigma.tmf.integration;
+package id.co.telkomsigma.tmf.security.management;
 
 
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;

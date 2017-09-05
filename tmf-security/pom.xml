@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>id.co.telkomsigma.tmf</groupId>
+        <artifactId>tmf</artifactId>
+        <version>1.0.0</version>
+    </parent>
+    
+    <artifactId>tmf-security</artifactId>
+    <packaging>jar</packaging>
+    <name>tmf-security</name>
+    <description>Security Component for Microservices Framework</description>
+    
+    <organization>
+        <name>Telkomsigma</name>
+        <url>http://www.telkomsigma.co.id</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>KNIGHTMASTER</id>
+            <name>Achmad Fauzi</name>
+            <email>fauzi.knightmaster.achmad@gmail.com</email>
+            <roles>
+                <role>author</role>
+                <role>developer</role>
+            </roles>
+            <timezone>+7</timezone>
+        </developer>
+    </developers>
+    
+    <dependencies>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${springfox-swagger-ui.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>id.co.telkomsigma.tmf</groupId>
+            <artifactId>tmf-service</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-mobile</artifactId>
+        </dependency>
+    </dependencies>
+    
+</project>
