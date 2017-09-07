@@ -14,12 +14,22 @@
             <groupId>id.co.telkomsigma.tmf</groupId>
             <artifactId>tmf-integration</artifactId>
             <version>${project.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>id.co.telkomsigma.tmf</groupId>
+                    <artifactId>tmf-service</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>id.co.telkomsigma.tmf</groupId>
+                    <artifactId>tmf-security</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
             <groupId>id.co.telkomsigma.tmf</groupId>
             <artifactId>tmf-security-management-service</artifactId>
-            <version>1.0.0</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
     

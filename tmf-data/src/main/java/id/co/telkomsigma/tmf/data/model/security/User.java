@@ -1,11 +1,12 @@
 package id.co.telkomsigma.tmf.data.model.security;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.IBasePojo;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Date;
 
 /**
  *
@@ -26,11 +27,15 @@ public class User implements IBasePojo {
 	private Timestamp credentialsExpiredDate;
 	private Integer nonLocked;
 	private Role role;
-	private SecurityGroup group;
+
+	@JsonManagedReference
 	private SecurityUserProfile securityUserProfile;
 
+	@JsonBackReference
+	private SecurityGroup group;
+
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "user_id")
 	public Long getId() {
 		return id;
@@ -67,11 +72,6 @@ public class User implements IBasePojo {
 		this.expiredDate = expiredDate;
 	}
 
-	public void setExpiredDate(Date expiredDate) {
-		if(expiredDate != null)
-			this.expiredDate = new Timestamp(expiredDate.getTime());
-	}
-
 	@Column(name = "user_credentials_expired_date")
 	public Timestamp getCredentialsExpiredDate() {
 		return credentialsExpiredDate;
@@ -79,11 +79,6 @@ public class User implements IBasePojo {
 
 	public void setCredentialsExpiredDate(Timestamp credentialsExpiredDate) {
 		this.credentialsExpiredDate = credentialsExpiredDate;
-	}
-
-	public void setCredentialsExpiredDate(Date credentialsExpiredDate) {
-		if(credentialsExpiredDate != null)
-			this.credentialsExpiredDate = new Timestamp(credentialsExpiredDate.getTime());
 	}
 
 	@Column(name = "user_non_locked")
@@ -105,7 +100,7 @@ public class User implements IBasePojo {
 		this.role = role;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "group_id", nullable = false)
 	public SecurityGroup getGroup() {
 		return group;
@@ -115,7 +110,7 @@ public class User implements IBasePojo {
 		this.group = group;
 	}
 		
-	@OneToOne(mappedBy = "user")
+	@OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
 	public SecurityUserProfile getSecurityUserProfile() {
 		return securityUserProfile;
 	}

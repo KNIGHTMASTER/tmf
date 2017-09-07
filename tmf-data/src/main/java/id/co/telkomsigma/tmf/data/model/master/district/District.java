@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.master.district;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.city.City;
@@ -23,11 +25,13 @@ public class District extends AAuditTrail {
      */
     private static final long serialVersionUID = -6165282598525095185L;
 
+    @JsonManagedReference
     private Set<Village> villages;
 
+    @JsonBackReference
     private City city;
 
-    @OneToMany(mappedBy = "district", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "district", fetch = FetchType.LAZY)
     public Set<Village> getVillages() {
         return villages;
     }
@@ -41,7 +45,7 @@ public class District extends AAuditTrail {
         return TMFConstant.Table.Master.MST_DISTRICT;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     public City getCity() {
         return city;

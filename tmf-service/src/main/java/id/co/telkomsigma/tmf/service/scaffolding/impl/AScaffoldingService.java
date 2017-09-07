@@ -35,6 +35,8 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public List<DATA> findAll() throws ServiceException {
         try {
+            List<DATA> dataas = scaffoldingDAO.findByStatus(TMFConstant.Common.GeneralValue.ONE);
+//            System.out.println("DATA SIZE "+dataas.size());
             return scaffoldingDAO.findByStatus(TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());

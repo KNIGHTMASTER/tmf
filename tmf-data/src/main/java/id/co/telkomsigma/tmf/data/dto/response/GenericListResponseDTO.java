@@ -39,8 +39,14 @@ public class GenericListResponseDTO<DTO> implements Serializable{
 
     @Override
     public String toString() {
-        return "GenericResponseDTO{" + "content=" + content + ", responseData=" + responseData + '}';
+        return "GenericResponseDTO{" + "content=" + expandResponse(content) + ", responseData=" + responseData.toString() + '}';
     }
     
-    
+    String expandResponse(List<DTO> dtoList){
+        String result = "";
+        for (DTO dto : dtoList){
+            result += dto.toString();
+        }
+        return result;
+    }
 }

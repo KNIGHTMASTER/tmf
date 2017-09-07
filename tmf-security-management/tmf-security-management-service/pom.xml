@@ -12,8 +12,8 @@
     <dependencies>
         <dependency>
             <groupId>id.co.telkomsigma.tmf</groupId>
-            <artifactId>tmf-service</artifactId>
-            <version>1.0.0</version>
+            <artifactId>tmf-security</artifactId>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>

@@ -9,9 +9,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = TMFConstant.Table.Master.MST_COMPANY)
 public class Company extends AAuditTrail {
-
 	/**
-	 * 
+	 *
+	 *
 	 */
 	private static final long serialVersionUID = -8752398398784954658L;
 

@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.master.province;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.city.City;
@@ -18,9 +20,13 @@ import java.util.Set;
 public class Province extends AAuditTrail {
     private static final long serialVersionUID = 4877117558375920984L;
 
+	@JsonBackReference
     private Country country;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
+
+	@JsonManagedReference
+	private Set<City> cities;
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     public Country getCountry() {
 		return country;
@@ -35,9 +41,8 @@ public class Province extends AAuditTrail {
         return TMFConstant.Table.Master.MST_PROVINCE;
     }
 
-    private Set<City> cities;
 
-    @OneToMany(mappedBy = "province", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "province", fetch = FetchType.LAZY)
 	public Set<City> getCities() {
 		return cities;
 	}
@@ -45,6 +50,5 @@ public class Province extends AAuditTrail {
 	public void setCities(Set<City> cities) {
 		this.cities = cities;
 	}
-    
-    
+
 }

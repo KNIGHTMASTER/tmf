@@ -33,7 +33,7 @@ public class SecurityOAuthClientDetailsServiceImpl implements ISecurityOAuthClie
 				secOAuthClientDetailsDAO.save(p_SecurityOAuthClientDetails);			
 				return 0;
 			}catch (Exception e) {
-				LOGGER.error("Error insert new Sec Oauth Client Details");
+				LOGGER.error("Error insert new Sec Oauth Client Details ".concat(e.toString()));
 				return -1;
 			}		
 		}else{

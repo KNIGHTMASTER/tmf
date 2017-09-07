@@ -40,5 +40,10 @@
             <artifactId>tmf-util-common</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>id.co.telkomsigma.tmf</groupId>
+            <artifactId>tmf-util-multiplex</artifactId>
+            <version>${project.version}</version>
+        </dependency>
     </dependencies>
 </project>

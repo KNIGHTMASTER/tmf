@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.security;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 
@@ -25,8 +27,12 @@ public class SecurityFunction extends AAuditTrail {
 	private Integer order;
 	private Integer level;
 	private String style;
+
+	@JsonBackReference
 	private SecurityFunction parentFunction;
 
+	@JsonManagedReference
+	private List<SecurityFunction> functions = new ArrayList<>();
 	/*@OneToMany
 	@JoinTable(
             name = "sec_function",
@@ -35,7 +41,6 @@ public class SecurityFunction extends AAuditTrail {
     )*/
 	
 
-	private List<SecurityFunction> functions = new ArrayList<>();
 
 	@Column(name = "url", length = 150)
 	public String getUrl() {

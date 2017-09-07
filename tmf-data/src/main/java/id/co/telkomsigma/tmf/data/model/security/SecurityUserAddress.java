@@ -1,5 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.security;
 
+import com.fasterxml.jackson.annotation.*;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.city.City;
@@ -18,6 +19,10 @@ import javax.persistence.*;
 @Entity
 @Table(name = TMFConstant.Table.Security.SEC_USER_ADDRESS)
 public class SecurityUserAddress extends AAuditTrail {
+    /**
+     *
+     *
+     */
     private static final long serialVersionUID = 3638338511792841794L;
 
     @Override
@@ -27,13 +32,26 @@ public class SecurityUserAddress extends AAuditTrail {
 
     private String detailAddress;
     private String postalCode;
+
+    @JsonBackReference
     private Country country;
+
+    @JsonIgnore
     private Province province;
+
+    @JsonIgnore
     private City city;
+
+    @JsonIgnore
     private District district;
+
+    @JsonIgnore
     private Village village;
 
-    @ManyToOne
+    /*@JsonManagedReference
+    private SecurityUserProfile securityUserProfile;*/
+
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "village_id")
     public Village getVillage() {
         return village;
@@ -43,7 +61,7 @@ public class SecurityUserAddress extends AAuditTrail {
         this.village = village;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id")
     public Province getProvince() {
         return province;
@@ -53,7 +71,7 @@ public class SecurityUserAddress extends AAuditTrail {
         this.province = province;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id")
     public City getCity() {
         return city;
@@ -63,7 +81,7 @@ public class SecurityUserAddress extends AAuditTrail {
         this.city = city;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_id")
     public District getDistrict() {
         return district;
@@ -73,7 +91,7 @@ public class SecurityUserAddress extends AAuditTrail {
         this.district = district;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     public Country getCountry() {
         return country;
@@ -100,6 +118,15 @@ public class SecurityUserAddress extends AAuditTrail {
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
     }
+
+    /*@OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    public SecurityUserProfile getSecurityUserProfile() {
+        return securityUserProfile;
+    }
+
+    public void setSecurityUserProfile(SecurityUserProfile securityUserProfile) {
+        this.securityUserProfile = securityUserProfile;
+    }*/
 
     @Override
     public String toString() {

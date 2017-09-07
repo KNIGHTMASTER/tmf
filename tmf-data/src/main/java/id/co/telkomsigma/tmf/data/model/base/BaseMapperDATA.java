@@ -21,7 +21,7 @@ public class BaseMapperDATA<KEY extends Serializable> implements IMasterDATA, IS
 	private String name;	
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
 	@Override
 	public KEY getId() {

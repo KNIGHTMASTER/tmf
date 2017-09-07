@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.security;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 
@@ -27,6 +29,7 @@ public class SecurityGroup extends AAuditTrail {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "branch_id")
 	@Access(AccessType.FIELD)
+	@JsonBackReference
 	private SecurityBranch branch;
 
 	@ManyToOne
@@ -34,9 +37,10 @@ public class SecurityGroup extends AAuditTrail {
 	@Access(AccessType.FIELD)
 	private Role role;
 
+	@JsonManagedReference
 	private Set<User> users;
 
-	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "group", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	public Set<User> getUsers() {
 		return users;
 	}
@@ -69,12 +73,12 @@ public class SecurityGroup extends AAuditTrail {
 		this.branch = branch;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
 		return "SecurityGroup{" +
 				"firstMenu=" + firstMenu +
 				", branch=" + branch +
 				", role=" + role +
 				'}';
-	}
+	}*/
 }

@@ -168,18 +168,46 @@ public interface TMFConstant {
         }
 
         interface Security{
-            String PATH_COMPANY = "/190001";
-            String PATH_BRANCH = "/190002";
-            String PATH_ROLE = "/190003";
-            String PATH_GROUP = "/190006";
-            String PATH_FUNCTION = "/190004";
-            String PATH_FUNCTION_ASSIGNMENT = "/190005";
-            String PATH_PROFILE = "/190010";
+            String PATH_COMPANY = "/api/security/190001";
+            String PATH_BRANCH = "/api/security/190002";
+            String PATH_ROLE = "/api/security/190003";
+            String PATH_GROUP = "/api/security/190006";
+            String PATH_FUNCTION = "/api/security/190004";
+            String PATH_FUNCTION_ASSIGNMENT = "/api/security/190005";
+            String PATH_PROFILE = "/api/security/190010";
+            String PATH_PASSWORD = "/api/security/password";
             String PATH_GET_PROFILE = "/191001";
             String PATH_UPDATE_PROFILE = "/191002";
             String PATH_UPDATE_PASSWORD = "/191003";
             String PATH_FORGOT_PASSWORD = "/191004";
             String PATH_RESET_PASSWORD = "/191005";
+            String PATH_REGISTRATION = "/api/security/200001";
+            String PATH_REGISTRATION_MEMBER = "200002";
+            String PATH_ACTIVATE_MEMBER = "200003";
+        }
+
+        interface Master{
+            String PATH_COUNTRY = "/api/130006";
+
+            String PATH_PROVINCE = "/api/130017";
+            String PATH_PROVINCE_BY_COUNTRY_ID = "/api/130171";
+            String PATH_PROVINCE_BY_COUNTRY_CODE = "/api/130172";
+            String PATH_PROVINCE_BY_COUNTRY_NAME = "/api/130173";
+
+            String PATH_CITY = "/api/130004";
+            String PATH_CITY_BY_PROVINCE_ID = "/api/130041";
+            String PATH_CITY_BY_PROVINCE_CODE = "/api/130042";
+            String PATH_CITY_BY_PROVINCE_NAME = "/api/130043";
+
+            String PATH_DISTRICT = "/api/130008";
+            String PATH_DISTRICT_BY_CITY_ID = "/api/130081";
+            String PATH_DISTRICT_BY_CITY_CODE = "/api/130082";
+            String PATH_DISTRICT_BY_CITY_NAME = "/api/130083";
+
+            String PATH_VILLAGE = "/api/130023";
+            String PATH_VILLAGE_BY_DISTRICT_ID = "/api/130231";
+            String PATH_VILLAGE_BY_DISTRICT_CODE = "/api/130232";
+            String PATH_VILLAGE_BY_DISTRICT_NAME = "/api/130233";
         }
     }
 

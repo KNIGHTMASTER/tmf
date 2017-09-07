@@ -1,5 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.master.contact;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.country.Country;
@@ -28,6 +29,8 @@ public class SecurityUserContact extends AAuditTrail {
     private String faxNumber;
     private String email;
     private Country country;
+
+    @JsonManagedReference
     private SecurityUserProfile securityUserProfile;
 
     @Column(name = "personal_number")
@@ -75,7 +78,7 @@ public class SecurityUserContact extends AAuditTrail {
         this.email = email;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "country_id")
     public Country getCountry() {
         return country;
@@ -85,7 +88,7 @@ public class SecurityUserContact extends AAuditTrail {
         this.country = country;
     }
     
-    @OneToOne(mappedBy = "contact")
+    @OneToOne(mappedBy = "contact", fetch = FetchType.LAZY)
 	public SecurityUserProfile getSecurityUserProfile() {
 		return securityUserProfile;
 	}

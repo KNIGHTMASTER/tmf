@@ -1,5 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.security;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.contact.SecurityUserContact;
@@ -14,15 +15,21 @@ import java.util.Date;
 @Entity
 @Table(name= TMFConstant.Table.Security.SEC_USER_PROFILE)
 public class SecurityUserProfile extends AAuditTrail {
-
 	/**
+	 *
 	 * 
 	 */
 	private static final long serialVersionUID = -1886133679857135012L;
 
-	private SecurityUserAddress address;
-	private SecurityUserContact contact;
+	@JsonBackReference
 	private User user;
+
+	@JsonBackReference
+	private SecurityUserAddress address;
+
+	@JsonBackReference
+	private SecurityUserContact contact;
+
 	private String birthPlace;
     private Integer gender;
     private Date birthDate;
@@ -54,8 +61,8 @@ public class SecurityUserProfile extends AAuditTrail {
 		this.birthDate = new Date(birthDate.getTime());
 	}
 
-	@ManyToOne
-	@JoinColumn(name="address_id")
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "address_id")
 	public SecurityUserAddress getAddress() {
 		return address;
 	}
@@ -100,11 +107,7 @@ public class SecurityUserProfile extends AAuditTrail {
 		this.forgotExpired = forgotExpired;
 	}
 
-	public void setForgotExpired(Date forgotExpired) {
-		this.forgotExpired = new Timestamp(forgotExpired.getTime());
-	}
-
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
 	public User getUser() {
 		return user;
@@ -124,7 +127,7 @@ public class SecurityUserProfile extends AAuditTrail {
 		i18NLocale = i18nLocale;
 	}
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "contact_id")
 	public SecurityUserContact getContact() {
 		return contact;

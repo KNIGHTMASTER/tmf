@@ -58,9 +58,11 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 				result =  findAllDTO();
 			}else {
 				result =  scaffoldingResponseConstructor.constructListFindResponse(scaffoldingService.findAll());
+				/*System.out.println("Resutl endpoint size : "+result.getContent().size());
+				System.out.println("Rest "+result.toString());*/
 			}
 		} catch (EndPointException | ServiceException e) {
-			LOGGER.error(TMFConstant.InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			LOGGER.error(TMFConstant.InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT + e.toString());
 		}
 		return result;
 	}
@@ -416,7 +418,7 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 		try {
 			result = scaffoldingResponseConstructor.constructDTOListFindResponse(dataMapperIntegration.mapEntitiesIntoDTOs(scaffoldingService.findAll()));
 		} catch (ServiceException e) {
-			LOGGER.error(TMFConstant.InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT);
+			LOGGER.error(TMFConstant.InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT + e.toString());
 		}
 		return result;
 	}

@@ -1,5 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.master.country;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.province.Province;
@@ -18,8 +19,13 @@ import java.util.Set;
 @Entity
 @Table(name = TMFConstant.Table.Master.MST_COUNTRY)
 public class Country extends AAuditTrail {
+    /**
+     *
+     *
+     */
     private static final long serialVersionUID = -3871254896944959025L;
 
+    @JsonManagedReference
     private Set<Province> province;
     
     @Override
@@ -27,7 +33,7 @@ public class Country extends AAuditTrail {
         return TMFConstant.Table.Master.MST_COUNTRY;
     }
 
-    @OneToMany(mappedBy = "country", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "country", fetch = FetchType.LAZY)
 	public Set<Province> getProvince() {
 		return province;
 	}
@@ -35,5 +41,5 @@ public class Country extends AAuditTrail {
 	public void setProvince(Set<Province> province) {
 		this.province = province;
 	}
-        
+
 }

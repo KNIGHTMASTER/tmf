@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.master.city;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.district.District;
@@ -28,10 +30,13 @@ public class City extends AAuditTrail {
         return TMFConstant.Table.Master.MST_CITY;
     }
 
+    @JsonBackReference
     private Province province;
+
+    @JsonManagedReference
     private Set<District> districts;
-    
-    @OneToMany(mappedBy = "city", fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "city", fetch = FetchType.LAZY)
     public Set<District> getDistricts() {
 		return districts;
 	}
@@ -40,7 +45,7 @@ public class City extends AAuditTrail {
 		this.districts = districts;
 	}
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "province_id")
     public Province getProvince() {
         return province;

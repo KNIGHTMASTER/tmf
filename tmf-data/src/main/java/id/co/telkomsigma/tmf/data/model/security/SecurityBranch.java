@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.data.model.security;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 
@@ -20,12 +22,15 @@ public class SecurityBranch extends AAuditTrail {
 	public String tableName() {
 		return TMFConstant.Table.Security.SEC_BRANCH;
 	}
-	
-	@ManyToOne
-	@JoinColumn(name = "company_id")
-	@Access(AccessType.FIELD)
+
+	@JsonBackReference
 	private SecurityCompany company;
 
+	@JsonManagedReference
+	private Set<SecurityGroup> securityGroups = new HashSet<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "company_id")
 	public SecurityCompany getCompany() {
 		return company;
 	}
@@ -34,10 +39,8 @@ public class SecurityBranch extends AAuditTrail {
 		this.company = company;
 	}
 
-	@OneToMany(mappedBy = "branch", fetch = FetchType.EAGER)
-	@Access(AccessType.FIELD)
-	private Set<SecurityGroup> securityGroups = new HashSet<>();
 
+	@OneToMany(mappedBy = "branch", fetch = FetchType.LAZY)
 	public Set<SecurityGroup> getSecurityGroups() {
 		return securityGroups;
 	}
@@ -46,10 +49,19 @@ public class SecurityBranch extends AAuditTrail {
 		this.securityGroups = securityGroups;
 	}
 
-	@Override
+	/*@Override
 	public String toString() {
-		return "SecurityBranche [company=" + company + "]";
+		return "SecurityBranch{" +
+				"company=" + company +
+				", securityGroups=" + expandGroups(securityGroups) +
+				'}';
 	}
 
-	
+	String expandGroups(Set<SecurityGroup> securityGroups){
+		String result = "";
+		for (SecurityGroup securityGroup : securityGroups){
+			result += securityGroup.toString();
+		}
+		return result;
+	}*/
 }

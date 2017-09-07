@@ -1,5 +1,6 @@
 package id.co.telkomsigma.tmf.data.model.master.village;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.data.model.master.district.District;
@@ -21,9 +22,10 @@ public class Village extends AAuditTrail {
         return TMFConstant.Table.Master.MST_VILLAGE;
     }
 
+    @JsonBackReference
     private District district;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "district_id")
     public District getDistrict() {
         return district;

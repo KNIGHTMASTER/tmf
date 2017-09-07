@@ -67,6 +67,7 @@ public enum EResponseCode {
 	RC_DATA_IS_EMPTY(410, "X-Q35", "Data is Empty"),
 	RC_DATA_NOT_FOUND(410, "X-Q36", "Data Not Found"),
 	RC_LOGOUT_FAILED(500, "X-037", "Logout Failed"),
+	RC_PASSWORD_UNMATCH(410, "X-038", "Password doesn't match policy"),
 
 	RC_FAILURE(500, "X-VVV", "Web Service Failure"),	
 	RC_FAIL_UPLOAD(503, "X-V01", "File upload failure"),
