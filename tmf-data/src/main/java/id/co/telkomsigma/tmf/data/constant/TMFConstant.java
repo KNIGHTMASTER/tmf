@@ -272,4 +272,8 @@ public interface TMFConstant {
         public static final String CONTEXT_SYSTEM_PARAMETER = "CONTEXT_SYSTEM_PARAMETER";
         public static final String CONTEXT_I18NLOCALE = "CONTEXT_I18NLOCALE";
     }
+
+    interface Queue {
+        String QUEUE_HEADER = "tmf.queue";
+    }
 }

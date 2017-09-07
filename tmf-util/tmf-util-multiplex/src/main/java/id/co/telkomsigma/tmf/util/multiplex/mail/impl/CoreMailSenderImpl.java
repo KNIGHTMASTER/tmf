@@ -1,9 +1,11 @@
 package id.co.telkomsigma.tmf.util.multiplex.mail.impl;
 
 import id.co.telkomsigma.tmf.util.multiplex.mail.ICoreMailSender;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.InternetAddress;
@@ -15,8 +17,10 @@ import java.io.UnsupportedEncodingException;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
+@Service
 public class CoreMailSenderImpl implements ICoreMailSender {
-	
+
+	@Autowired
 	private JavaMailSender mailSender;
 
 	public void setMailSender(JavaMailSender mailSender) {
@@ -65,9 +69,7 @@ public class CoreMailSenderImpl implements ICoreMailSender {
 			helper.setSubject(subject);
 			helper.setText(content, true);
 			helper.setPriority(1);
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		} catch (UnsupportedEncodingException e) {
+		} catch (MessagingException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
 		return helper;
