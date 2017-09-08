@@ -130,6 +130,8 @@ public interface TMFConstant {
         String PATH_REFRESH = "/100004";
         String PATH_ADMIN_MENU_GENERATOR = "/100003";
         String PATH_ECHO = "/echo";
+        String PATH_START_JMS_MANAGER = "/jms/manager/start";
+        String PATH_STOP_JMS_MANAGER = "/jms/manager/stop";
 
         interface PathScaffolding {
             String PATH_FIND_ALL = "/100004";
@@ -275,5 +277,9 @@ public interface TMFConstant {
 
     interface Queue {
         String QUEUE_HEADER = "tmf.queue";
+    }
+
+    interface JMS{
+        String JMSConnectionFactoryName = "tmfJmsListenerConnectionFactory";
     }
 }
