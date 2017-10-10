@@ -16,7 +16,7 @@ import java.util.Set;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TMFConstant.Table.Master.MST_DISTRICT)
+@Table(name = TMFConstant.Table.Master.MST_DISTRICT, schema = "bill")
 public class District extends AAuditTrail {
 
     /**

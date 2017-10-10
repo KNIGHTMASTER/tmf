@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_OAUTH_CLIENT_DETAILS)
+@Table(name = TMFConstant.Table.Security.SEC_OAUTH_CLIENT_DETAILS, schema = "bill")
 public class SecurityOAuthClientDetails implements Serializable{
 
 	/**
@@ -25,7 +25,6 @@ public class SecurityOAuthClientDetails implements Serializable{
 	private Integer refreshTokenValidity;
 	private String additionalInformation;
 	private String autoApprove;
-		
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -124,6 +123,7 @@ public class SecurityOAuthClientDetails implements Serializable{
 	public void setAutoApprove(String autoApprove) {
 		this.autoApprove = autoApprove;
 	}
+
 	@Override
 	public String toString() {
 		return "SecurityOAuthClientDetails [clientId=" + clientId + ", resourceId=" + resourceId + ", clientSecret="

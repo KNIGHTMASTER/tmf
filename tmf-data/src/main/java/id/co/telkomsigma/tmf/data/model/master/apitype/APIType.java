@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TMFConstant.Table.Master.MST_API_TYPE)
+@Table(name = TMFConstant.Table.Master.MST_API_TYPE, schema = "bill")
 @ApiModel("Model API Type")
 public class APIType extends AAuditTrail {
 

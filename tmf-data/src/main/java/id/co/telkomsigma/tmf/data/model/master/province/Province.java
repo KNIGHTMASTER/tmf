@@ -16,7 +16,7 @@ import java.util.Set;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TMFConstant.Table.Master.MST_PROVINCE)
+@Table(name = TMFConstant.Table.Master.MST_PROVINCE, schema = "bill")
 public class Province extends AAuditTrail {
     private static final long serialVersionUID = 4877117558375920984L;
 

@@ -2,7 +2,6 @@ package id.co.telkomsigma.tmf.util.common.runtime;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,20 +9,20 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import static id.co.telkomsigma.tmf.util.common.constant.TMFUtilCommonConstant.RunTime.*;
+
 /**
  * Created on 7/7/17.
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Service
-public class RuntimeExecutor implements IRuntimeExecutor{
+public class RuntimeExecutor {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RuntimeExecutor.class);
 
-    @Override
-    public List<String> findAllJavaProcess() {
+    public static List<String> findAllJavaProcess() {
         List<String> result = new ArrayList<>();
-        String [] COMMAND = {"pgrep", "-fl", "java"};
+        String [] COMMAND = {PGREP, _FL, JAVA};
         try {
             String process;
             Process p = Runtime.getRuntime().exec(COMMAND);
@@ -39,8 +38,7 @@ public class RuntimeExecutor implements IRuntimeExecutor{
         return result;
     }
 
-    @Override
-    public String findPIDofJavaProcess(String p_NameOfJavaProcess) {
+    public static String findPIDofJavaProcess(String p_NameOfJavaProcess) {
         List<String> allJavaProcess = findAllJavaProcess();
         String PID = null;
         for (String jp : allJavaProcess){
@@ -52,11 +50,10 @@ public class RuntimeExecutor implements IRuntimeExecutor{
         return PID;
     }
 
-    @Override
-    public void killAnotherJavaProcess(String p_NameOfJavaProcess) {
+    public static void killAnotherJavaProcess(String p_NameOfJavaProcess) {
         String PID = findPIDofJavaProcess(p_NameOfJavaProcess);
         if (PID != null){
-            final String COMMAND = "kill -9 ".concat(PID);
+            final String COMMAND = KILL_SERVICE.concat(PID);
             try {
                 Runtime.getRuntime().exec(COMMAND);
             } catch (IOException e) {
@@ -68,16 +65,15 @@ public class RuntimeExecutor implements IRuntimeExecutor{
 
     }
 
-    @Override
-    public int startSingleProcess(String p_NameOfProcess, String p_Arguments[]) {
-        String command = "java -jar ".concat(p_NameOfProcess);
+    public static int startSingleProcess(String p_NameOfProcess, String p_Arguments[], String p_BreakIdentifier) {
+        String command = RUN_JAVA.concat(p_NameOfProcess);
         String arguments = " ";
         if (p_Arguments.length > 0){
             for (String  args : p_Arguments){
                 arguments += args.concat(" ");
             }
         }
-        command += arguments.concat(" &");
+        command += arguments.concat(IN_BACKGROUND);
         LOGGER.info("COMMAND "+command);
         try {
             String process;
@@ -85,7 +81,7 @@ public class RuntimeExecutor implements IRuntimeExecutor{
             BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
             while ((process = input.readLine()) != null) {
                 LOGGER.info(process);
-                if (process.contains("Started DaemonApp"))
+                if (process.contains(p_BreakIdentifier))
                     break;
             }
             input.close();

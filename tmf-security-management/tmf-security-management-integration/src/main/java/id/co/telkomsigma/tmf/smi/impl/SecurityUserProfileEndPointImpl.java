@@ -7,6 +7,7 @@ import id.co.telkomsigma.tmf.data.dto.request.RequestUpdateProfileDTO;
 import id.co.telkomsigma.tmf.data.dto.response.AddressResponseDTO;
 import id.co.telkomsigma.tmf.data.dto.response.ContactResponseDTO;
 import id.co.telkomsigma.tmf.data.dto.response.ProfileResponseDTO;
+import id.co.telkomsigma.tmf.data.mapper.impl.SecurityUserProfileMapper;
 import id.co.telkomsigma.tmf.data.model.security.SecurityUserProfile;
 import id.co.telkomsigma.tmf.integration.scaffolding.impl.AScaffoldingEndPoint;
 import id.co.telkomsigma.tmf.security.provider.UserAuthenticationContext;
@@ -32,12 +33,16 @@ public class SecurityUserProfileEndPointImpl extends AScaffoldingEndPoint<Securi
     @Autowired
     ISecurityUserProfileService securityUserProfileService;
 
+    @Autowired
+    SecurityUserProfileMapper securityUserProfileMapper;
+
     private static Logger LOGGER = LoggerFactory.getLogger(SecurityUserProfileEndPointImpl.class);
 
     @PostConstruct
     @Override
     public void init() {
         scaffoldingService = securityUserProfileService;
+        dataMapperIntegration = securityUserProfileMapper;
     }
 
     @Override

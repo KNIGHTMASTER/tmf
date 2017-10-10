@@ -2,7 +2,7 @@ package id.co.telkomsigma.tmf.integration.exception;
 
 /**
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
- * @author <a href="mailto:ridla.fadilah@gmail.com">Ridla Fadilah</a>
+ *
  */
 public class UsernameFaultException extends Exception {
 

@@ -29,14 +29,11 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
 
     protected IScaffoldingDAO<DATA> scaffoldingDAO;
 
-
     /*Inquiry*/
     /*======================================================================================================*/
     @Override
     public List<DATA> findAll() throws ServiceException {
         try {
-            List<DATA> dataas = scaffoldingDAO.findByStatus(TMFConstant.Common.GeneralValue.ONE);
-//            System.out.println("DATA SIZE "+dataas.size());
             return scaffoldingDAO.findByStatus(TMFConstant.Common.GeneralValue.ONE);
         } catch (DAOException e) {
             LOGGER.error(e.getMessage());
@@ -193,6 +190,11 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
         } catch (Exception e) {
             throw new ServiceException("Error insert ".concat(e.toString()));
         }
+    }
+
+    @Override
+    public void flush() throws ServiceException {
+        scaffoldingDAO.flush();
     }
 
     @Override

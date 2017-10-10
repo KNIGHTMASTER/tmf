@@ -6,7 +6,7 @@ import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import javax.persistence.*;
 
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_FUNCTION_ASSIGNMENT)
+@Table(name = TMFConstant.Table.Security.SEC_FUNCTION_ASSIGNMENT, schema = "bill")
 public class SecurityFunctionAssignment extends AAuditTrail {
 
 	/**

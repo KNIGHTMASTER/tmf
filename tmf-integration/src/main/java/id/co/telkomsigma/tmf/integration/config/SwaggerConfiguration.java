@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DevicePlatform;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.*;
@@ -129,7 +130,7 @@ public class SwaggerConfiguration {
                 null);
     }
 
-    String generateTokenForSwagger(){
+    String generateTokenForSwagger() throws UsernameNotFoundException{
         return tokenUtils.generateToken(sigmaUserDetailsService.loadUserByUsername("admin"), new Device() {
             @Override
             public boolean isNormal() {

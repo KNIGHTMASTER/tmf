@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import java.util.Set;
 
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_COMPANY)
+@Table(name = TMFConstant.Table.Security.SEC_COMPANY, schema = "bill")
 public class SecurityCompany extends AAuditTrail {
 
 	/**

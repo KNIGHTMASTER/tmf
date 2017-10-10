@@ -14,7 +14,7 @@
             <groupId>id.co.telkomsigma.tmf</groupId>
             <artifactId>tmf-integration</artifactId>
             <version>${project.version}</version>
-            <exclusions>
+            <!--<exclusions>
                 <exclusion>
                     <groupId>id.co.telkomsigma.tmf</groupId>
                     <artifactId>tmf-service</artifactId>
@@ -23,7 +23,7 @@
                     <groupId>id.co.telkomsigma.tmf</groupId>
                     <artifactId>tmf-security</artifactId>
                 </exclusion>
-            </exclusions>
+            </exclusions>-->
         </dependency>
 
         <dependency>

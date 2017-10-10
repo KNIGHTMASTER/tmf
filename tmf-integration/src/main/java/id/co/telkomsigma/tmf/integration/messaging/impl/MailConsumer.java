@@ -1,6 +1,7 @@
 package id.co.telkomsigma.tmf.integration.messaging.impl;
 
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant.JMS.ConnectionFactory;
 import id.co.telkomsigma.tmf.data.dto.request.MailContentRequestDTO;
 import id.co.telkomsigma.tmf.integration.messaging.IJMSConsumer;
 import id.co.telkomsigma.tmf.util.multiplex.mail.ICoreMailSender;
@@ -23,7 +24,7 @@ public class MailConsumer implements IJMSConsumer<MailContentRequestDTO> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MailConsumer.class);
 
-    @JmsListener(containerFactory = TMFConstant.JMS.JMSConnectionFactoryName, destination = TMFConstant.Queue.QUEUE_HEADER)
+    @JmsListener(containerFactory = ConnectionFactory.BASIC_CONNECTION_FACTORY, destination = TMFConstant.JMS.Queue.QUEUE_MAIL)
     @Override
     public void receive(MailContentRequestDTO p_Message) {
         LOGGER.info(p_Message.getContent());

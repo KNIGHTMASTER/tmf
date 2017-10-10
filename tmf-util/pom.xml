@@ -28,8 +28,24 @@
             <timezone>+7</timezone>
         </developer>
     </developers>
+
+    <properties>
+        <open.csv.version>2.3</open.csv.version>
+        <commons.net.version>3.3</commons.net.version>
+    </properties>
+
     <modules>
         <module>tmf-util-common</module>
         <module>tmf-util-multiplex</module>
     </modules>
+    <dependencies>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+        </dependency>
+    </dependencies>
 </project>

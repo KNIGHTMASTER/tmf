@@ -1,4 +1,4 @@
-package id.co.telkomsigma.tmf.integration;
+package id.co.telkomsigma.tmf.integration.messaging;
 
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.dto.ResponseData;

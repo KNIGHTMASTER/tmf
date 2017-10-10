@@ -54,6 +54,7 @@
         <springfox-swagger-ui.version>2.7.0</springfox-swagger-ui.version>
         <jjwt.version>0.7.0</jjwt.version>
         <passay.version>1.3.0</passay.version>
+        <commons.net.version>3.3</commons.net.version>
     </properties>
     
 </project>

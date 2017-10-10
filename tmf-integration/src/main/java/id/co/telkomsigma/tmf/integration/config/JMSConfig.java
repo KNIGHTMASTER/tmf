@@ -16,7 +16,10 @@ import org.springframework.messaging.converter.MessageConverter;
 import org.springframework.messaging.handler.annotation.support.DefaultMessageHandlerMethodFactory;
 
 import javax.jms.Queue;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+
+import static id.co.telkomsigma.tmf.data.constant.TMFConstant.JMS.TrustedPackages.*;
 
 /**
  * Created on 9/8/17.
@@ -37,9 +40,9 @@ public class JMSConfig implements JmsListenerConfigurer {
     @Value("${jms.listener.concurrency.size}")
     String jmsListenerConcurrencySize;
 
-    @Bean
-    public Queue queue() {
-        return new ActiveMQQueue(TMFConstant.Queue.QUEUE_HEADER);
+    @Bean(name = TMFConstant.JMS.Queue.QUEUE_MAIL)
+    public Queue queueMail() {
+        return new ActiveMQQueue(TMFConstant.JMS.Queue.QUEUE_MAIL);
     }
 
     @Bean
@@ -50,7 +53,7 @@ public class JMSConfig implements JmsListenerConfigurer {
     }
 
     @Bean
-    public DefaultJmsListenerContainerFactory tmfJmsListenerConnectionFactory() {
+    public DefaultJmsListenerContainerFactory basicConnectionFactory() {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         factory.setConcurrency(jmsListenerConcurrencySize);
         factory.setAutoStartup(false);
@@ -61,7 +64,12 @@ public class JMSConfig implements JmsListenerConfigurer {
     @Bean
     public ActiveMQConnectionFactory activeMQConnectionFactory() {
         ActiveMQConnectionFactory factory = new ActiveMQConnectionFactory(activeMQBrokerUrl);
-        factory.setTrustedPackages(Arrays.asList(TMFConstant.Common.BASE_PACKAGES));
+        List<String> trustedPackages = new ArrayList<>();
+        trustedPackages.add(JAVA_LANG);
+        trustedPackages.add(JAVA_MATH);
+        trustedPackages.add(JAVA_UTIL);
+        trustedPackages.add(TMFConstant.Common.BASE_PACKAGES);
+        factory.setTrustedPackages(trustedPackages);
         return factory;
     }
 

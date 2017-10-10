@@ -31,7 +31,7 @@ public class CoreMailSenderImpl implements ICoreMailSender {
 	public void sendMailContent(String from, String to, String subject, String content) {
 		MimeMessage message = mailSender.createMimeMessage();
 		buildBasicMimeMessageHelper(message, from, to, subject, content);
-		mailSender.send(message);	
+		mailSender.send(message);
 	}
 
 	@Override

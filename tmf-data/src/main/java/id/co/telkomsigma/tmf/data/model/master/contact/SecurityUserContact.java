@@ -14,7 +14,7 @@ import javax.persistence.*;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_USER_CONTACT)
+@Table(name = TMFConstant.Table.Security.SEC_USER_CONTACT, schema = "bill")
 public class SecurityUserContact extends AAuditTrail {
     private static final long serialVersionUID = 6804239567456143530L;
 

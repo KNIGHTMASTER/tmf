@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_FUNCTION)
+@Table(name = TMFConstant.Table.Security.SEC_FUNCTION, schema = "bill")
 public class SecurityFunction extends AAuditTrail {
 
 	/**

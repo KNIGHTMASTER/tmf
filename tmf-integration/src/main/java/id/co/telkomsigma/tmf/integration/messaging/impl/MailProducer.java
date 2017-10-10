@@ -1,8 +1,10 @@
 package id.co.telkomsigma.tmf.integration.messaging.impl;
 
+import id.co.telkomsigma.tmf.data.constant.TMFConstant;
 import id.co.telkomsigma.tmf.data.dto.request.MailContentRequestDTO;
 import id.co.telkomsigma.tmf.integration.messaging.IJMSProducer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jms.core.JmsMessagingTemplate;
 import org.springframework.stereotype.Component;
 
@@ -20,10 +22,11 @@ public class MailProducer implements IJMSProducer<MailContentRequestDTO> {
     private JmsMessagingTemplate jmsMessagingTemplate;
 
     @Autowired(required = false)
-    Queue queue;
+    @Qualifier(value = TMFConstant.JMS.Queue.QUEUE_MAIL)
+    Queue queueMail;
 
     @Override
     public void send(MailContentRequestDTO p_Message) {
-        this.jmsMessagingTemplate.convertAndSend(queue, p_Message);
+        this.jmsMessagingTemplate.convertAndSend(queueMail, p_Message);
     }
 }

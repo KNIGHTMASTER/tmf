@@ -19,7 +19,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.ArrayList;
@@ -44,8 +43,8 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 	@Autowired
 	protected IDataBuilderEndPoint iDataBuilderEndPoint;
 
-	@Autowired
-	protected AuthenticationProvider ethAuthenticationProvider;
+	/*@Autowired
+	protected AuthenticationProvider ethAuthenticationProvider;*/
 
 	/*===========================INQUIRY ENDPOINT IMPLEMENTATION===========================*/
 	/*====================================DATA ENTITY======================================*/
@@ -58,11 +57,9 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 				result =  findAllDTO();
 			}else {
 				result =  scaffoldingResponseConstructor.constructListFindResponse(scaffoldingService.findAll());
-				/*System.out.println("Resutl endpoint size : "+result.getContent().size());
-				System.out.println("Rest "+result.toString());*/
 			}
 		} catch (EndPointException | ServiceException e) {
-			LOGGER.error(TMFConstant.InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT + e.toString());
+			LOGGER.error(TMFConstant.InfoMarkerConstant.ERR_SCAFFOLDING_ENDPOINT, e.toString());
 		}
 		return result;
 	}
@@ -514,7 +511,7 @@ public abstract class AScaffoldingEndPoint<DATA> implements IScaffoldingEndPoint
 	@Override
 	public ResponseData insertData(@RequestBody DATA p_DATA) throws EndPointException {
 		try {
-//			scaffoldingService.setEthAuthenticationDTO(ethAuthenticationProvider.generateAuth());
+//			scaffoldingService.setEthAuthenticationDTO(ethAuthenticationProvider.generateAuth()););
 			scaffoldingService.insert(p_DATA);
 			return scaffoldingResponseConstructor.constructSimpleTransactionResponse(iDataBuilderEndPoint.buildSuccessResponse());
 		}catch (EndPointException | ServiceException e){

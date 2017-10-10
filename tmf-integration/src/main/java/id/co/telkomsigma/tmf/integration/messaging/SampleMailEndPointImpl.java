@@ -1,9 +1,8 @@
-package id.co.telkomsigma.tmf.integration.impl;
+package id.co.telkomsigma.tmf.integration.messaging;
 
 import id.co.telkomsigma.tmf.data.constant.EResponseCode;
 import id.co.telkomsigma.tmf.data.dto.ResponseData;
 import id.co.telkomsigma.tmf.data.dto.request.MailContentRequestDTO;
-import id.co.telkomsigma.tmf.integration.ISampleMailEndPoint;
 import id.co.telkomsigma.tmf.integration.messaging.impl.MailProducer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;

@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name= TMFConstant.Table.Security.SEC_LOCALE)
+@Table(name= TMFConstant.Table.Security.SEC_LOCALE, schema = "bill")
 public class I18NLocale extends AAuditTrail {
 
 	/**

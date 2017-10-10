@@ -5,5 +5,14 @@ package id.co.telkomsigma.tmf.util.common.constant;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-public class TMFUtilCommonConstant {
+public interface TMFUtilCommonConstant {
+
+    interface RunTime {
+        String PGREP = "pgrep";
+        String _FL = "-fl";
+        String JAVA = "java";
+        String KILL_SERVICE = "kill -9 ";
+        String RUN_JAVA = "java -jar ";
+        String IN_BACKGROUND = " &";
+    }
 }

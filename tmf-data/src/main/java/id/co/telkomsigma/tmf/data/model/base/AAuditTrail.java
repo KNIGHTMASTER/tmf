@@ -9,17 +9,19 @@ import java.util.Date;
  *
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
+@EntityListeners(SigmaAuditorAware.class)
 @MappedSuperclass
 public abstract class AAuditTrail extends ABaseAuditTrail {
 
-	private SigmaAuditorAware sigmaAuditorAware;
+	public SigmaAuditorAware sigmaAuditorAware;
 	
 	public AAuditTrail() {
 		sigmaAuditorAware = new SigmaAuditorAware();
 	}
 
 	/**
-	 * 
+	 *
+	 *
 	 */
 	private static final long serialVersionUID = -5401587542468260575L;
 
@@ -43,7 +45,6 @@ public abstract class AAuditTrail extends ABaseAuditTrail {
 	 */
 	@PreUpdate
 	public void onPreUpdate(){
-		System.out.println("PREUPDATE");
 		setModifiedOn(new Date());
 		setModifiedBy(sigmaAuditorAware.getCurrentAuditor().getUserName());
 		setModifiedIP(sigmaAuditorAware.getCurrentAuditor().getIpAddress());
@@ -140,5 +141,4 @@ public abstract class AAuditTrail extends ABaseAuditTrail {
 	public void setModifiedPlatform(String modifiedPlatform) {
 		this.modifiedPlatform = modifiedPlatform;
 	}
-	
 }

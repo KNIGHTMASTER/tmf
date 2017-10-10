@@ -12,7 +12,7 @@ import java.util.Date;
  */
 
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_USER_VERIFICATION)
+@Table(name = TMFConstant.Table.Security.SEC_USER_VERIFICATION, schema = "bill")
 public class SecurityUserVerification {
 
 	private Long id;

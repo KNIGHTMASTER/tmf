@@ -13,7 +13,7 @@ import java.sql.Timestamp;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name= TMFConstant.Table.Security.SEC_USER_DETAILS)
+@Table(name= TMFConstant.Table.Security.SEC_USER_DETAILS, schema = "bill")
 public class User implements IBasePojo {
 
 	/**

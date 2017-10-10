@@ -13,7 +13,7 @@ import javax.persistence.*;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TMFConstant.Table.Master.MST_VILLAGE)
+@Table(name = TMFConstant.Table.Master.MST_VILLAGE, schema = "bill")
 public class Village extends AAuditTrail {
     private static final long serialVersionUID = -882333480264178395L;
 

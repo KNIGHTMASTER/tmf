@@ -17,6 +17,9 @@ public interface ITransactionService<DATA, ID> extends ICancellationService<ID>,
 	void insert(DATA p_DATA) throws ServiceException;
 
 	@Transactional
+	void flush() throws ServiceException;
+
+	@Transactional
 	void insertAndFlush(DATA p_DATA) throws ServiceException;
 
 	@Transactional

@@ -17,7 +17,7 @@ import javax.persistence.*;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_USER_ADDRESS)
+@Table(name = TMFConstant.Table.Security.SEC_USER_ADDRESS, schema = "bill")
 public class SecurityUserAddress extends AAuditTrail {
     /**
      *

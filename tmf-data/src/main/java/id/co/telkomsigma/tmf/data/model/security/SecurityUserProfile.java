@@ -13,7 +13,7 @@ import java.util.Date;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name= TMFConstant.Table.Security.SEC_USER_PROFILE)
+@Table(name= TMFConstant.Table.Security.SEC_USER_PROFILE, schema = "bill")
 public class SecurityUserProfile extends AAuditTrail {
 	/**
 	 *
@@ -24,7 +24,6 @@ public class SecurityUserProfile extends AAuditTrail {
 	@JsonBackReference
 	private User user;
 
-	@JsonBackReference
 	private SecurityUserAddress address;
 
 	@JsonBackReference

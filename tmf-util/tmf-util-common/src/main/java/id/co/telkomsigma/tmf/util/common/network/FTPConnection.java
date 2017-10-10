@@ -1,52 +1,41 @@
 package id.co.telkomsigma.tmf.util.common.network;
 
 
-import id.co.telkomsigma.etc.data.statics.ApplicationConstant;
-import id.co.telkomsigma.etc.data.transaction.LogFTPStatus;
-import id.co.telkomsigma.etc.service.parameter.IParamComponent;
-import id.co.telkomsigma.etc.service.parameter.ParamFTPServer;
-import id.co.telkomsigma.etc.service.transaction.ILogFTPStatusService;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
  *
  * @author <a href="fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
-@Service
-public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPServer> {
+public class FTPConnection {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FTPConnection.class);
 
-    @Autowired
-    ParamFTPServer paramFTPConnection;
-
-    @Autowired
-    ILogFTPStatusService logFTPStatusService;
-
     private FTPClient fTPClient;
 
-    public FTPConnection() {
-        fTPClient = new FTPClient();
+    public FTPConnection(FTPClient p_FTPClient) {
+        this.fTPClient = p_FTPClient;
     }
 
-    @Override
-    public void contractConnection() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    ParamFTPServer paramFTPConnection;
+
+    public FTPClient getfTPClient() {
+        return fTPClient;
     }
 
-    @Override
+    public void setfTPClient(FTPClient fTPClient) {
+        this.fTPClient = fTPClient;
+    }
+
     public int isConnected() {
         int result = 0;
         String ipServer = paramFTPConnection.getIpServer();
@@ -88,12 +77,8 @@ public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPSe
         return result;
     }
 
-    @Override
     public void upload(String p_OriginFileName, String p_LocalFilePath, String p_RemoteFilePath) {
         FTPClient ftpClient = new FTPClient();
-        LogFTPStatus logFTPStatus = new LogFTPStatus();
-        logFTPStatus.setFileName(p_OriginFileName);
-        logFTPStatus.setHost(paramFTPConnection.getIpServer());
         try {
 
             ftpClient.connect(paramFTPConnection.getIpServer(), Integer.parseInt(paramFTPConnection.getFtpPort()));
@@ -105,23 +90,13 @@ public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPSe
             InputStream inputStream = new FileInputStream(p_LocalFilePath);
 
             LOGGER.info("Start uploading file ".concat(p_LocalFilePath));
-            logFTPStatus.setFtpStartTime(new Date());
-            logFTPStatus.setFtpStatus(ApplicationConstant.FTPStatus.ON_PROCESS);
-            logFTPStatusService.insert(logFTPStatus);
             boolean done = ftpClient.storeFile(p_RemoteFilePath, inputStream);
             inputStream.close();
             if (done) {
                 LOGGER.info("The file "+p_RemoteFilePath+" has been uploaded successfully.");
-                logFTPStatus.setFtpEndTime(new Date());
-                logFTPStatus.setFtpStatus(ApplicationConstant.FTPStatus.DONE);
-                logFTPStatusService.insert(logFTPStatus);
             }
         } catch (IOException ex) {
             LOGGER.error("Error: " + ex.getMessage());
-            logFTPStatus.setFtpEndTime(new Date());
-            logFTPStatus.setFtpStatus(ApplicationConstant.FTPStatus.FAILED);
-            logFTPStatus.setFtpErrorMessage(ex.getMessage());
-            logFTPStatusService.insert(logFTPStatus);
             ex.printStackTrace();
         } finally {
             try {
@@ -136,7 +111,6 @@ public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPSe
     }
 
 
-    @Override
     public int download(String p_RemoteFilePath, String p_LocalFilePath) {
         int result = 0;
         FTPClient ftpClient = new FTPClient();
@@ -174,7 +148,6 @@ public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPSe
         return result;
     }
 
-    @Override
     public int delete(String p_RemoteFilePath) {
         FTPClient ftpClient = new FTPClient();
         int result = 0;
@@ -200,7 +173,6 @@ public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPSe
         return result;
     }
 
-    @Override
     public List<String> getAllRemoteFiles(String p_RemoteDirectory) {
         FTPClient ftpClient = new FTPClient();
         List<String> remoteFTPFiles = new ArrayList<>();
@@ -240,16 +212,5 @@ public class FTPConnection implements IFTPConnection, IParamComponent<ParamFTPSe
         }
         return remoteFTPFiles;
     }
-
-    @Override
-    public void setComponent(ParamFTPServer p_Component) {
-        this.paramFTPConnection = p_Component;
-    }
-
-    @Override
-    public ParamFTPServer getComponent() {
-        return paramFTPConnection;
-    }
-
 
 }

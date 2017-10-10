@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
  */
 @Entity
-@Table(name= TMFConstant.Table.Security.SEC_ROLE)
+@Table(name= TMFConstant.Table.Security.SEC_ROLE, schema = "bill")
 public class Role extends AAuditTrail implements GrantedAuthority {
 	
 	/**

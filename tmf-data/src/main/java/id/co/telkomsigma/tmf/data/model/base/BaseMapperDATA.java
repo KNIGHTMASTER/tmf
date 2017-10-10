@@ -35,8 +35,8 @@ public class BaseMapperDATA<KEY extends Serializable> implements IMasterDATA, IS
 		return code;
 	}
 
-	@Size(max = 50)
-	@Column(name = "name", length = 50)
+	@Size(max = 100)
+	@Column(name = "name", length = 100)
 	@Override
 	public String getName() {
 		return name;

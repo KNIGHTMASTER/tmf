@@ -225,12 +225,22 @@ public interface TMFConstant {
         String LOGIN = "SELECT "
                 + "ocd.client_id, ocd.client_secret, sud.user_enabled, "
                 + "sud.user_expired_date, sud.user_credentials_expired_date, sud.user_non_locked, sr.code "
+                + "FROM bill.sec_user_details sud "
+                + "JOIN bill.sec_oauth_client_details ocd ON sud.client_id = ocd.client_id "
+                + "JOIN bill.sec_role sr ON sud.role_id = sr.id "
+                + "JOIN bill.sec_user_profile mp ON mp.user_id = sud.user_id "
+                + "JOIN bill.sec_contact sc ON sc.id = mp.contact_id "
+                + "WHERE ocd.client_id = ? OR sc.email = ? OR sc.phone_number_1 = ?";
+
+        /*String LOGIN = "SELECT "
+                + "ocd.client_id, ocd.client_secret, sud.user_enabled, "
+                + "sud.user_expired_date, sud.user_credentials_expired_date, sud.user_non_locked, sr.code "
                 + "FROM sec_user_details sud "
                 + "JOIN sec_oauth_client_details ocd ON sud.client_id = ocd.client_id "
                 + "JOIN sec_role sr ON sud.role_id = sr.id "
                 + "JOIN sec_user_profile mp ON mp.user_id = sud.user_id "
                 + "JOIN sec_contact sc ON sc.id = mp.contact_id "
-                + "WHERE ocd.client_id = ? OR sc.email = ? OR sc.phone_number_1 = ?";
+                + "WHERE ocd.client_id = ? OR sc.email = ? OR sc.phone_number_1 = ?";*/
 
         String AUTHENTICATION_CHANGE = "UPDATE oauth_client_details "
                 + "SET client_secret = ?1 WHERE client_id = ?2";
@@ -275,11 +285,19 @@ public interface TMFConstant {
         public static final String CONTEXT_I18NLOCALE = "CONTEXT_I18NLOCALE";
     }
 
-    interface Queue {
-        String QUEUE_HEADER = "tmf.queue";
-    }
-
     interface JMS{
-        String JMSConnectionFactoryName = "tmfJmsListenerConnectionFactory";
+        interface ConnectionFactory {
+            String BASIC_CONNECTION_FACTORY = "basicConnectionFactory";
+        }
+
+        interface TrustedPackages {
+            String JAVA_LANG = "java.lang";
+            String JAVA_MATH = "java.math";
+            String JAVA_UTIL = "java.util";
+        }
+
+        interface Queue {
+            String QUEUE_MAIL = "tmf.queue.mail";
+        }
     }
 }

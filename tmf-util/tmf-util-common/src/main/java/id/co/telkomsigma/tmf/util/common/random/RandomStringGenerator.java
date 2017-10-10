@@ -11,7 +11,7 @@ public class RandomStringGenerator {
 	
 	public static String generateRandomString(int length, Mode mode) throws Exception {
 
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder stringBuilder = new StringBuilder();
 		String characters = "";
 
 		switch(mode){
@@ -33,9 +33,9 @@ public class RandomStringGenerator {
 
 		for (int i = 0; i < length; i++) {
 			double index = Math.random() * charactersLength;
-			buffer.append(characters.charAt((int) index));
+			stringBuilder.append(characters.charAt((int) index));
 		}
-		return buffer.toString();
+		return stringBuilder.toString();
 	}
 	
 }

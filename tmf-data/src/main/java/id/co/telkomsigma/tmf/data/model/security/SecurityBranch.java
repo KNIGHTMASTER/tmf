@@ -10,7 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = TMFConstant.Table.Security.SEC_BRANCH)
+@Table(name = TMFConstant.Table.Security.SEC_BRANCH, schema = "bill")
 public class SecurityBranch extends AAuditTrail {
 
 	/**
