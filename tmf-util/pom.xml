@@ -32,6 +32,7 @@
     <properties>
         <open.csv.version>2.3</open.csv.version>
         <commons.net.version>3.3</commons.net.version>
+        <generex.version>1.0.2</generex.version>
     </properties>
 
     <modules>

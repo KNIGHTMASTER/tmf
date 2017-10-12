@@ -15,10 +15,12 @@ import org.springframework.web.client.RestTemplate;
  */
 public abstract class ARestClient<DATA, REQUEST_ENTITY> implements IRestClient<DATA, REQUEST_ENTITY> {
 
+    protected String urlTarget;
+
     @Override
-    public DATA queryClient(String urlToQuery){
+    public DATA queryClient(){
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject(urlToQuery, getObjectResultClass());
+        return restTemplate.getForObject(urlTarget, getObjectResultClass());
     }
 
     @Override
@@ -27,12 +29,22 @@ public abstract class ARestClient<DATA, REQUEST_ENTITY> implements IRestClient<D
     }
 
     @Override
-    public DATA queryClient(String p_UrlToQuery, MultiValueMap<String, String> p_HttpHeaders, REQUEST_ENTITY p_ObjectToPass) {
+    public DATA queryClient(MultiValueMap<String, String> p_HttpHeaders, REQUEST_ENTITY p_ObjectToPass) {
         RestTemplate restTemplate = new RestTemplate();
         restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
         HttpEntity<REQUEST_ENTITY> entity = new HttpEntity(p_ObjectToPass, p_HttpHeaders);
-        return restTemplate.postForObject(p_UrlToQuery, entity, getObjectResultClass());
+        return restTemplate.postForObject(urlTarget, entity, getObjectResultClass());
     }
 
     public abstract Class<DATA> getObjectResultClass();
+
+    @Override
+    public String getParam() {
+        return urlTarget;
+    }
+
+    @Override
+    public void setParam(String p_Param) {
+        this.urlTarget = p_Param;
+    }
 }

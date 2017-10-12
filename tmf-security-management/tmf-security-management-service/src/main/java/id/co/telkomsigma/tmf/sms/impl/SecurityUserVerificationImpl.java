@@ -36,7 +36,7 @@ public class SecurityUserVerificationImpl implements ISecurityUserVerificationSe
 	@Override
 	public String generateTokenVerification() {
 		try {
-			return RandomStringGenerator.generateRandomString(TOKEN_LENGTH, RandomStringGenerator.Mode.ALPHANUMERIC);
+			return RandomStringGenerator.generate(TOKEN_LENGTH, RandomStringGenerator.Mode.ALPHANUMERIC);
 		} catch (Exception e) {
 			LOGGER.error("Cannot generate random string for token verification");
 			e.printStackTrace();

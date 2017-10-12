@@ -33,6 +33,10 @@ public interface TMFConstant {
             int ONE = 1;
             int ZERO = 0;
             int MIN_ONE = -1;
+
+            String OK = "OK";
+            String KEY = "Key";
+            String VALUE = "Value";
         }
 
         interface Punctuation {

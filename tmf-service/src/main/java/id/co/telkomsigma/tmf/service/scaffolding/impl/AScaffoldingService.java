@@ -3,6 +3,7 @@ package id.co.telkomsigma.tmf.service.scaffolding.impl;
 import id.co.telkomsigma.tmf.dao.exception.DAOException;
 import id.co.telkomsigma.tmf.dao.scaffolding.IScaffoldingDAO;
 import id.co.telkomsigma.tmf.data.constant.TMFConstant;
+import id.co.telkomsigma.tmf.data.constant.TMFConstant.Common.Punctuation;
 import id.co.telkomsigma.tmf.data.model.base.AAuditTrail;
 import id.co.telkomsigma.tmf.service.exception.ServiceException;
 import id.co.telkomsigma.tmf.service.scaffolding.IScaffoldingService;
@@ -182,7 +183,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     /*======================================================================================================*/
     @Override
     public void insert(DATA p_DATA) throws ServiceException {
-        if (p_DATA.getCode() == null || p_DATA.getCode().equals(TMFConstant.Common.Punctuation.EMPTY)) {
+        if (p_DATA.getCode() == null || p_DATA.getCode().equals(Punctuation.EMPTY)) {
             p_DATA.setCode(generateRandomCode());
         }
         try {
@@ -199,7 +200,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
 
     @Override
     public void insertAndFlush(DATA p_DATA) throws ServiceException {
-        if (p_DATA.getCode() == null || p_DATA.getCode().equals(TMFConstant.Common.Punctuation.EMPTY)) {
+        if (p_DATA.getCode() == null || p_DATA.getCode().equals(Punctuation.EMPTY)) {
             p_DATA.setCode(generateRandomCode());
         }
         try {
@@ -212,7 +213,7 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
     @Override
     public void insertCollection(List<DATA> p_DATA) throws ServiceException {
         for (DATA data : p_DATA) {
-            if (data.getCode() == null || data.getCode().equals(TMFConstant.Common.Punctuation.EMPTY)) {
+            if (data.getCode() == null || data.getCode().equals(Punctuation.EMPTY)) {
                 data.setCode(generateRandomCode());
             }
         }
@@ -334,12 +335,11 @@ public abstract class AScaffoldingService<DATA extends AAuditTrail> implements I
 
     @Override
     public String generateRandomCode() {
-        RandomStringGenerator randomStringGenerator = new RandomStringGenerator();
-        String result = "";
+        String result = Punctuation.EMPTY;
         DATA randomData = null;
         do {
             try {
-                result = randomStringGenerator.generateRandomString(6, RandomStringGenerator.Mode.ALPHANUMERIC).toUpperCase();
+                result = RandomStringGenerator.generate(6, RandomStringGenerator.Mode.ALPHANUMERIC).toUpperCase();
                 List<DATA> dataList = findByCode(result);
                 if (dataList.size() > 0) {
                     randomData = dataList.get(0);

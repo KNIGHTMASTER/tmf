@@ -1,5 +1,7 @@
 package id.co.telkomsigma.tmf.integration.restclient;
 
+import id.co.telkomsigma.tmf.data.param.IComponentInitializer;
+import id.co.telkomsigma.tmf.data.param.IParameterizedComponent;
 import org.springframework.util.MultiValueMap;
 
 /**
@@ -9,11 +11,11 @@ import org.springframework.util.MultiValueMap;
  * @param <DATA>
  * @param <REQUEST_ENTITY>
  */
-public interface IRestClient<DATA, REQUEST_ENTITY> {
+public interface IRestClient<DATA, REQUEST_ENTITY> extends IParameterizedComponent<String>, IComponentInitializer{
 
     DATA consume();
 
-    DATA queryClient(String p_UrlToQuery);
+    DATA queryClient();
 
-    DATA queryClient(String p_UrlToQuery, MultiValueMap<String, String> p_HttpHeaders, REQUEST_ENTITY p_ObjectToPass);
+    DATA queryClient(MultiValueMap<String, String> p_HttpHeaders, REQUEST_ENTITY p_ObjectToPass);
 }

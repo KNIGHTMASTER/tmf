@@ -9,7 +9,7 @@ public class RandomStringGenerator {
 	    ALPHA, ALPHANUMERIC, NUMERIC 
 	}
 	
-	public static String generateRandomString(int length, Mode mode) throws Exception {
+	public static String generate(int length, Mode mode) throws Exception {
 
 		StringBuilder stringBuilder = new StringBuilder();
 		String characters = "";

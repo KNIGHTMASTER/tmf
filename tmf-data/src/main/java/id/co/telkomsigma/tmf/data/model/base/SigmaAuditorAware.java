@@ -37,7 +37,7 @@ public class SigmaAuditorAware implements AuditorAware<TMFAuthenticationDetailDT
             TMFAuthenticationDetailDTO.setUserName(SecurityContextHolder.getContext().getAuthentication().getName());
             return TMFAuthenticationDetailDTO;
         }catch (Exception e) {
-            LOGGER.error("Failed to get Authentication Detail. Audit Trailing will use public user instead "+e.toString());
+//            LOGGER.error("Failed to get Authentication Detail. Audit Trailing will use public user instead "+e.toString());
             TMFAuthenticationDetailDTO TMFAuthenticationDetailDTO = new TMFAuthenticationDetailDTO();
         	TMFAuthenticationDetailDTO.setUserName(TMFConstant.Common.PUBLIC_USER);
 			return TMFAuthenticationDetailDTO;
