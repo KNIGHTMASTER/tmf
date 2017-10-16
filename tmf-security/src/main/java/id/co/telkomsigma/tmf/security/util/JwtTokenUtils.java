@@ -63,7 +63,6 @@ public class JwtTokenUtils {
         Date expiration;
         try {
             final Claims claims = this.getClaimsFromToken(token);
-            System.err.println(claims);
             expiration = claims.getExpiration();
         } catch (Exception e) {
             expiration = null;

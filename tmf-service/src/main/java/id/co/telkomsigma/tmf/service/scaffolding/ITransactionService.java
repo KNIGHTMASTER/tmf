@@ -1,9 +1,6 @@
 package id.co.telkomsigma.tmf.service.scaffolding;
 
-import id.co.telkomsigma.tmf.service.exception.ServiceException;
-import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
+import id.co.telkomsigma.tmf.service.crud.ICrudTransactionService;
 
 /**
  * 
@@ -11,33 +8,5 @@ import java.util.List;
  * @param <DATA>
  * @param <ID>
  */
-public interface ITransactionService<DATA, ID> extends ICancellationService<ID>, IApprovalService<ID> {
-
-	@Transactional
-	void insert(DATA p_DATA) throws ServiceException;
-
-	@Transactional
-	void flush() throws ServiceException;
-
-	@Transactional
-	void insertAndFlush(DATA p_DATA) throws ServiceException;
-
-	@Transactional
-	void insertCollection(List<DATA> p_DATA)  throws ServiceException;
-
-	@Transactional
-	void update(DATA p_DATA)  throws ServiceException;
-
-	@Transactional
-	void delete(ID p_ID)  throws ServiceException;
-
-	@Transactional
-	void deleteByEntity(String p_Code)  throws ServiceException;
-
-	@Transactional
-	void deleteCollection(List<String> p_Codes)  throws ServiceException;
-
-	@Transactional
-	void deleteCollectionById(List<ID> p_ID)  throws ServiceException;
-	
+public interface ITransactionService<DATA, ID> extends ICrudTransactionService<DATA, ID>, ICancellationService<ID>, IApprovalService<ID> {
 }

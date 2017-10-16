@@ -5,33 +5,32 @@ import java.io.Serializable;
 /**
  *
 * @author <a href="mailto:fauzi.knightmaster.achmad@gmail.com">Achmad Fauzi</a>
+ * @param <KEY>
+ * @param <VALUE>
  */
-public class LOVDTO implements Serializable{
+public class LOVDTO<KEY, VALUE> implements Serializable{
     /**
      * 
      * 
      */
     private static final long serialVersionUID = -1117195724949104462L;
     
-    private Object key;
-    private Object value;
+    private KEY key;
+    private VALUE value;
 
-    public Object getKey() {
+    public KEY getKey() {
         return key;
     }
 
-    public void setKey(Object key) {
+    public void setKey(KEY key) {
         this.key = key;
     }
 
-    public Object getValue() {
+    public VALUE getValue() {
         return value;
     }
 
-    public void setValue(Object value) {
+    public void setValue(VALUE value) {
         this.value = value;
     }
-    
-    
-    
 }

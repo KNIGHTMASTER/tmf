@@ -1,5 +1,6 @@
 package id.co.telkomsigma.tmf.service.scaffolding;
 
+import id.co.telkomsigma.tmf.service.crud.ICrudInquiryService;
 import id.co.telkomsigma.tmf.service.exception.ServiceException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,13 +13,7 @@ import java.util.List;
  * @param <DATA>
  * @param <ID>
  */
-public interface IInquiryService<DATA, ID> {
-
-	List<DATA> findAll() throws ServiceException;
-
-	Page<DATA> findAll(Pageable p_Pageable);
-
-	DATA findById(ID p_ID) throws ServiceException;
+public interface IInquiryService<DATA, ID> extends ICrudInquiryService<DATA, ID> {
 	
 	/*Property Code*/
 	List<DATA> findByCode(String p_Code) throws ServiceException;

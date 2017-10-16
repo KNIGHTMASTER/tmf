@@ -229,11 +229,11 @@ public interface TMFConstant {
         String LOGIN = "SELECT "
                 + "ocd.client_id, ocd.client_secret, sud.user_enabled, "
                 + "sud.user_expired_date, sud.user_credentials_expired_date, sud.user_non_locked, sr.code "
-                + "FROM bill.sec_user_details sud "
-                + "JOIN bill.sec_oauth_client_details ocd ON sud.client_id = ocd.client_id "
-                + "JOIN bill.sec_role sr ON sud.role_id = sr.id "
-                + "JOIN bill.sec_user_profile mp ON mp.user_id = sud.user_id "
-                + "JOIN bill.sec_contact sc ON sc.id = mp.contact_id "
+                + "FROM public.sec_user_details sud "
+                + "JOIN public.sec_oauth_client_details ocd ON sud.client_id = ocd.client_id "
+                + "JOIN public.sec_role sr ON sud.role_id = sr.id "
+                + "JOIN public.sec_user_profile mp ON mp.user_id = sud.user_id "
+                + "JOIN public.sec_contact sc ON sc.id = mp.contact_id "
                 + "WHERE ocd.client_id = ? OR sc.email = ? OR sc.phone_number_1 = ?";
 
         /*String LOGIN = "SELECT "
@@ -264,6 +264,7 @@ public interface TMFConstant {
 
     interface BeanName {
         String SCAFFOLDING_SERVICE_BEAN = "scaffoldingService";
+        String CRUD_SERVICE_BEAN = "crudService";
     }
 
     interface ResourceProperties {
